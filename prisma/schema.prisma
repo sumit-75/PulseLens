@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Log {
+  id        String   @id @default(cuid())
+  service   String
+  level     String   // "info" | "warn" | "error"
+  message   String
+  timestamp DateTime @default(now())
+
+  @@index([service])
+  @@index([level])
+  @@index([timestamp])
+}
+
+model Metric {
+  id        String   @id @default(cuid())
+  service   String
+  name      String
+  value     Float
+  timestamp DateTime @default(now())
+
+  @@index([service])
+  @@index([name])
+  @@index([timestamp])
+}
+
+model AlertRule {
+  id            String       @id @default(cuid())
+  service       String
+  metric        String?      // metric name, if metric-based
+  logLevel      String?      // "error" | "warn", if log-based
+  condition     String       // e.g. "error count > 10"
+  threshold     Float
+  windowMinutes Int
+  enabled       Boolean      @default(true)
+  createdAt     DateTime     @default(now())
+  events        AlertEvent[]
+
+  @@index([service])
+}
+
+model AlertEvent {
+  id          String    @id @default(cuid())
+  rule        AlertRule @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+  ruleId      String
+  triggeredAt DateTime  @default(now())
+  details     String
+
+  @@index([ruleId])
+  @@index([triggeredAt])
+}
