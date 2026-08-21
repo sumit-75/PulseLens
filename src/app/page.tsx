@@ -8,6 +8,8 @@ import { BarChart3, BellRing, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
+import { MetricsViewer } from '@/components/dashboard/MetricsViewer';
+
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = React.useState<'logs' | 'metrics' | 'alerts' | 'services'>('logs');
 
@@ -23,42 +25,7 @@ export default function DashboardPage() {
 
           {activeTab === 'services' && <ServicesOverview />}
 
-          {activeTab === 'metrics' && (
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-                  <BarChart3 className="h-6 w-6 text-indigo-400" />
-                  Metrics & Time-Series Graphs
-                </h1>
-                <p className="text-xs text-slate-400 mt-1">
-                  Interactive latency histograms, requests throughput, memory utilization, and custom gauge charts.
-                </p>
-              </div>
-
-              <Card className="p-12 text-center border-slate-800/80 bg-slate-900/40">
-                <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 inline-block mb-4">
-                  <BarChart3 className="h-10 w-10 animate-bounce" />
-                </div>
-                <h3 className="text-lg font-semibold text-white">
-                  Metrics & Graphs — Scheduled for Phase 6
-                </h3>
-                <p className="text-xs text-slate-400 max-w-md mx-auto mt-2 leading-relaxed">
-                  Phase 6 will bring interactive Recharts time-series graphs, service response-time distributions, and custom metric selectors.
-                </p>
-                <div className="mt-6">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setActiveTab('logs')}
-                    className="gap-2 text-xs"
-                  >
-                    <span>Back to Log Viewer</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Button>
-                </div>
-              </Card>
-            </div>
-          )}
+          {activeTab === 'metrics' && <MetricsViewer />}
 
           {activeTab === 'alerts' && (
             <div className="space-y-6">
