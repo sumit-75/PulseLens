@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "postinstall": "prisma generate",
     "simulate": "tsx scripts/simulate-traffic.ts",
     "cron": "tsx scripts/run-alert-cron.ts"
   },
