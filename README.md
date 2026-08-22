@@ -33,7 +33,6 @@
 - **📉 Interactive Metrics Graphs (Recharts)**: Smooth gradient area charts, custom glassmorphic tooltips, multi-metric sparklines breakdown, and statistical KPIs (Avg, Min, Max, P95).
 - **🚨 Automated Alert Rules & Background Cron Worker (`node-cron`)**: Configure log error count or metric latency threshold rules evaluated automatically every minute (`* * * * *`).
 - **🔐 Google OAuth & Demo Auth (Auth.js v5)**: Secure dashboard login with Google accounts and instant one-click demo access for reviewers.
-- **🌐 Cloud-Ready**: Built for deployment on **Vercel** with **Neon Serverless PostgreSQL**.
 
 ---
 
