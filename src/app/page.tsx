@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
 import { MetricsViewer } from '@/components/dashboard/MetricsViewer';
+import { AlertRulesViewer } from '@/components/dashboard/AlertRulesViewer';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = React.useState<'logs' | 'metrics' | 'alerts' | 'services'>('logs');
@@ -27,42 +28,7 @@ export default function DashboardPage() {
 
           {activeTab === 'metrics' && <MetricsViewer />}
 
-          {activeTab === 'alerts' && (
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-                  <BellRing className="h-6 w-6 text-indigo-400" />
-                  Alert Rules & Incident Events
-                </h1>
-                <p className="text-xs text-slate-400 mt-1">
-                  Threshold monitoring rules, automated node-cron background checks, and incident logs.
-                </p>
-              </div>
-
-              <Card className="p-12 text-center border-slate-800/80 bg-slate-900/40">
-                <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 inline-block mb-4">
-                  <BellRing className="h-10 w-10 animate-pulse" />
-                </div>
-                <h3 className="text-lg font-semibold text-white">
-                  Alert Rules & Background Checker — Scheduled for Phase 7
-                </h3>
-                <p className="text-xs text-slate-400 max-w-md mx-auto mt-2 leading-relaxed">
-                  Phase 7 will let you create dynamic threshold rules (e.g. error rate &gt; 10 in 5 mins) evaluated by automated background jobs.
-                </p>
-                <div className="mt-6">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setActiveTab('logs')}
-                    className="gap-2 text-xs"
-                  >
-                    <span>Back to Log Viewer</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Button>
-                </div>
-              </Card>
-            </div>
-          )}
+          {activeTab === 'alerts' && <AlertRulesViewer />}
         </div>
       </main>
     </div>
