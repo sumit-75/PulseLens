@@ -411,14 +411,14 @@ npm run simulate
       {/* Features Bento Grid Section */}
       <section id="features" className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-14">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#889089] bg-[#181711] border border-[#e2e7e3]/15 px-3.5 py-1 rounded-full">
-            Complete Telemetry Stack
+          <span className="text-xs font-bold uppercase tracking-wider text-[#a6aea7] bg-[#15140e] border border-[#e2e7e3]/15 px-3.5 py-1 rounded-full shadow-sm">
+            Platform Architecture
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#e2e7e3] mt-3">
             Engineered for High-Velocity Microservices
           </h2>
           <p className="text-sm sm:text-base text-[#a6aea7] max-w-2xl mx-auto mt-2.5 font-normal">
-            Everything your engineering team needs to observe, track, and alert across distributed backend architectures.
+            Everything your engineering team needs to ingest, visualize, and monitor real-time distributed telemetry with zero bloat.
           </p>
         </div>
 
@@ -427,49 +427,44 @@ npm run simulate
           {/* Row 1: 2 Cards (Wide Left + Live Graph Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Card 1: Wide Card (7 cols) */}
-            <div className="lg:col-span-7 rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+            <div className="lg:col-span-7 rounded-3xl border border-[#e2e7e3]/12 bg-[#15140e] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
               <div>
-                {/* Top Bar with Icon & Status Dots */}
+                {/* Top Bar with Icon & Perfect Glowing Green LED Array */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-sm">
                     <Layers className="h-5 w-5" />
                   </div>
-                  {/* Glowing 5-Dot Array */}
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+
+                  {/* Perfect Server Rack LED Dot Array */}
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0e0d08] border border-[#e2e7e3]/15 shadow-inner">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
+                    </span>
+                    <span className="h-2 w-2 rounded-full bg-emerald-400/90 shadow-[0_0_8px_#34d399]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400/90 shadow-[0_0_8px_#34d399]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400/90 shadow-[0_0_8px_#34d399]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400/90 shadow-[0_0_8px_#34d399]" />
                   </div>
                 </div>
 
-                {/* Title & Description */}
+                {/* Title & Description with Real Project Details */}
                 <h3 className="text-xl sm:text-2xl font-bold text-[#e2e7e3] tracking-tight">
-                  Real-Time Log Stream & Full-Text Search
+                  PostgreSQL Log Indexing & Live Stream
                 </h3>
                 <p className="text-sm text-[#a6aea7] mt-2.5 leading-relaxed max-w-2xl font-normal">
-                  High-throughput structured ingestion across microservices. Inspect full JSON payloads, filter by severity levels (INFO, WARN, ERROR), and query distributed event traces instantly.
+                  Ingests high-throughput JSON telemetry into Neon Serverless PostgreSQL with indexed composite lookups on <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">service</code>, <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">level</code>, and <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">timestamp</code> for real-time querying.
                 </p>
               </div>
 
-              {/* 4 Bottom Stats Grid */}
+              {/* 4 Bottom Real Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 mt-6 border-t border-[#e2e7e3]/10">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
-                    100k+
-                  </div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
-                    INGESTION/SEC
-                  </span>
-                </div>
-
                 <div>
                   <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
                     3.0s
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
-                    STREAM INTERVAL
+                    POLL INTERVAL
                   </span>
                 </div>
 
@@ -478,7 +473,7 @@ npm run simulate
                     &lt; 5ms
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
-                    API LATENCY
+                    INGESTION LATENCY
                   </span>
                 </div>
 
@@ -487,14 +482,23 @@ npm run simulate
                     100%
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
-                    PARSER ACCURACY
+                    NEON POSTGRES
+                  </span>
+                </div>
+
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
+                    Indexed
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
+                    COMPOSITE QUERIES
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Card 2: Live Latency Telemetry Graph (5 cols) */}
-            <div className="lg:col-span-5 rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+            <div className="lg:col-span-5 rounded-3xl border border-[#e2e7e3]/12 bg-[#15140e] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
               <div>
                 {/* Icon */}
                 <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
@@ -503,39 +507,41 @@ npm run simulate
 
                 {/* Title & Description */}
                 <h3 className="text-xl sm:text-2xl font-bold text-[#e2e7e3] tracking-tight">
-                  Live Latency Telemetry
+                  Live Metrics & Graphs
                 </h3>
                 <p className="text-sm text-[#a6aea7] mt-2.5 leading-relaxed font-normal">
-                  Real-time latency charting, statistical percentiles (P95, Avg, Min, Max), and automatic anomaly spike detection.
+                  Tracks <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">response_time_ms</code>, <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">cpu_usage_pct</code>, and <code className="text-[#e2e7e3] bg-[#0e0d08] px-1.5 py-0.5 rounded border border-[#e2e7e3]/10 font-mono text-xs">memory_usage_mb</code> with Recharts area charts and statistical KPI calculations (P95, Avg, Min, Max).
                 </p>
               </div>
 
-              {/* Glowing SVG Waveform Chart */}
+              {/* Glowing SVG Waveform Chart in exact Theme Palette */}
               <div className="pt-6 mt-6 border-t border-[#e2e7e3]/10">
-                <div className="flex items-center justify-between text-xs font-mono mb-2">
-                  <span className="text-[#889089]">Response Latency</span>
-                  <span className="text-emerald-400 font-bold">42.5 ms Peak</span>
+                <div className="flex items-center justify-between text-xs font-mono mb-2.5">
+                  <span className="text-[#a6aea7] font-medium">response_time_ms</span>
+                  <span className="text-[#e2e7e3] font-bold bg-[#0e0d08] px-2 py-0.5 rounded border border-[#e2e7e3]/15">
+                    42.5 ms P95
+                  </span>
                 </div>
 
-                {/* SVG Graph Wave */}
-                <div className="h-20 w-full relative overflow-hidden rounded-xl bg-[#0e0d08]/60 p-2 flex items-end">
+                {/* SVG Graph Wave matching #e2e7e3 Theme Palette */}
+                <div className="h-20 w-full relative overflow-hidden rounded-xl bg-[#0e0d08] border border-[#e2e7e3]/10 p-2 flex items-end">
                   <svg className="w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
                     <defs>
-                      <linearGradient id="emeraldGraphGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#34d399" stopOpacity="0.45" />
-                        <stop offset="100%" stopColor="#34d399" stopOpacity="0.0" />
+                      <linearGradient id="themeGraphGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#e2e7e3" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#e2e7e3" stopOpacity="0.0" />
                       </linearGradient>
                     </defs>
                     {/* Gradient Fill */}
                     <polygon
                       points="0,60 0,40 30,35 60,42 90,28 120,45 150,20 180,38 210,12 240,32 270,18 300,25 300,60"
-                      fill="url(#emeraldGraphGradient)"
+                      fill="url(#themeGraphGradient)"
                     />
                     {/* Glowing Line */}
                     <polyline
                       points="0,40 30,35 60,42 90,28 120,45 150,20 180,38 210,12 240,32 270,18 300,25"
                       fill="none"
-                      stroke="#34d399"
+                      stroke="#e2e7e3"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -549,35 +555,35 @@ npm run simulate
           {/* Row 2: 3 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 3: Multi-Service Catalog */}
-            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#15140e] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
               <div>
                 <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
                   <Database className="h-5 w-5" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#e2e7e3] tracking-tight">
-                  Multi-Service Catalog
+                  Registered Service Catalog
                 </h3>
                 <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
-                  Organize microservices into dedicated registered catalog items with active heartbeat and metadata indexing.
+                  Auto-registers active telemetry producers like <span className="text-[#e2e7e3] font-medium font-mono text-xs">payment-service</span> and <span className="text-[#e2e7e3] font-medium font-mono text-xs">auth-service</span> with dynamic heartbeat tracking.
                 </p>
               </div>
 
               {/* Tag Pills */}
               <div className="flex flex-wrap items-center gap-2 pt-6 mt-6 border-t border-[#e2e7e3]/10">
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
-                  payment-svc
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#0e0d08] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  payment-service
                 </span>
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
-                  auth-svc
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#0e0d08] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  auth-service
                 </span>
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-emerald-500/10 border border-emerald-500/25 text-emerald-300">
-                  Healthy &lt;35ms
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#0e0d08] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  order-service
                 </span>
               </div>
             </div>
 
             {/* Card 4: Traffic Simulator Engine */}
-            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#15140e] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
               <div>
                 <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
                   <Cpu className="h-5 w-5" />
@@ -586,43 +592,43 @@ npm run simulate
                   Traffic Simulator Engine
                 </h3>
                 <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
-                  Built-in multi-service telemetry simulator emitting concurrent traffic ticks, error rate spikes, and REST control hooks.
+                  Built-in multi-service telemetry generator (<code className="text-[#e2e7e3] bg-[#0e0d08] px-1 py-0.5 rounded font-mono text-xs">scripts/simulate-traffic.ts</code>) emitting concurrent traffic spikes and webhook errors.
                 </p>
               </div>
 
-              {/* Live Pill */}
+              {/* Live Pill with Perfect Glowing Green Light */}
               <div className="pt-6 mt-6 border-t border-[#e2e7e3]/10">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  ~500ms telemetry tick
+                <span className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-[#0e0d08] border border-[#e2e7e3]/15 text-[#e2e7e3] shadow-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                  </span>
+                  <span>npm run simulate (500ms)</span>
                 </span>
               </div>
             </div>
 
             {/* Card 5: Threshold Guard & Auth */}
-            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#15140e] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
               <div>
                 <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#e2e7e3] tracking-tight">
-                  Threshold Guard & Auth
+                  Autonomous Alert Daemon
                 </h3>
                 <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
-                  Autonomous background alerts whenever error counts exceed limits, backed by Google OAuth & JWT session security.
+                  Evaluates error count and latency thresholds every minute via <code className="text-[#e2e7e3] bg-[#0e0d08] px-1 py-0.5 rounded font-mono text-xs">node-cron</code>, recording violation events in the incident audit stream.
                 </p>
               </div>
 
               {/* Tag Pills */}
               <div className="flex flex-wrap items-center gap-2 pt-6 mt-6 border-t border-[#e2e7e3]/10">
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
-                  OAuth 2.0
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#0e0d08] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  node-cron (* * * * *)
                 </span>
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-rose-500/10 border border-rose-500/25 text-rose-300">
-                  Incident Alert
-                </span>
-                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
-                  Cron 60s
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#0e0d08] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  Incident Timeline
                 </span>
               </div>
             </div>
