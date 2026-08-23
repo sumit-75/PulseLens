@@ -15,14 +15,14 @@ export default function LoginPage() {
 
   React.useEffect(() => {
     if (status === 'authenticated' && session) {
-      router.push('/');
+      router.push('/dashboard');
     }
   }, [status, session, router]);
 
   const handleGoogleSignIn = async () => {
     setIsLoadingGoogle(true);
     try {
-      await signIn('google', { callbackUrl: '/' });
+      await signIn('google', { callbackUrl: '/dashboard' });
     } catch (err) {
       console.error('Google Sign In error:', err);
     } finally {
@@ -33,7 +33,7 @@ export default function LoginPage() {
   const handleDemoSignIn = async () => {
     setIsLoadingDemo(true);
     try {
-      await signIn('demo-login', { callbackUrl: '/' });
+      await signIn('demo-login', { callbackUrl: '/dashboard' });
     } catch (err) {
       console.error('Demo Sign In error:', err);
     } finally {
