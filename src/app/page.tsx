@@ -408,98 +408,225 @@ npm run simulate
         </div>
       </section>
 
-      {/* Features Grid Section */}
+      {/* Features Bento Grid Section */}
       <section id="features" className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#889089] bg-[#181711] border border-[#e2e7e3]/15 px-3 py-1 rounded-full">
+        <div className="text-center mb-14">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#889089] bg-[#181711] border border-[#e2e7e3]/15 px-3.5 py-1 rounded-full">
             Complete Telemetry Stack
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#e2e7e3] mt-3">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#e2e7e3] mt-3">
             Engineered for High-Velocity Microservices
           </h2>
-          <p className="text-sm sm:text-base text-[#a6aea7] max-w-2xl mx-auto mt-2 font-normal">
+          <p className="text-sm sm:text-base text-[#a6aea7] max-w-2xl mx-auto mt-2.5 font-normal">
             Everything your engineering team needs to observe, track, and alert across distributed backend architectures.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <Terminal className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              Structured Log Stream
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Real-time ingestion with full-text search, service filtering, severity pill toggles, and instant JSON inspector drawer.
-            </p>
-          </Card>
+        {/* Bento Grid Container */}
+        <div className="space-y-6">
+          {/* Row 1: 2 Cards (Wide Left + Live Graph Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Card 1: Wide Card (7 cols) */}
+            <div className="lg:col-span-7 rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+              <div>
+                {/* Top Bar with Icon & Status Dots */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-sm">
+                    <Layers className="h-5 w-5" />
+                  </div>
+                  {/* Glowing 5-Dot Array */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                  </div>
+                </div>
 
-          {/* Card 2 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <BarChart3 className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              Time-Series Graphs & KPIs
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Interactive Recharts area charts calculate P95 latency, average, min, and peak utilization trends across services.
-            </p>
-          </Card>
+                {/* Title & Description */}
+                <h3 className="text-xl sm:text-2xl font-bold text-[#e2e7e3] tracking-tight">
+                  Real-Time Log Stream & Full-Text Search
+                </h3>
+                <p className="text-sm text-[#a6aea7] mt-2.5 leading-relaxed max-w-2xl font-normal">
+                  High-throughput structured ingestion across microservices. Inspect full JSON payloads, filter by severity levels (INFO, WARN, ERROR), and query distributed event traces instantly.
+                </p>
+              </div>
 
-          {/* Card 3 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <BellRing className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              Autonomous Alerting Daemon
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Background cron worker evaluates threshold conditions and writes incidents to an audit timeline with on-demand check triggers.
-            </p>
-          </Card>
+              {/* 4 Bottom Stats Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 mt-6 border-t border-[#e2e7e3]/10">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
+                    100k+
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
+                    INGESTION/SEC
+                  </span>
+                </div>
 
-          {/* Card 4 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <Code2 className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              Zero-Config TypeScript SDK
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Plug-and-play client SDK with type safety, automatic error handling, and lightweight payload serialization.
-            </p>
-          </Card>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
+                    3.0s
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
+                    STREAM INTERVAL
+                  </span>
+                </div>
 
-          {/* Card 5 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <Database className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              Neon Serverless Postgres
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Backed by Neon serverless PostgreSQL with indexed queries on service, timestamp, and severity levels for instant lookups.
-            </p>
-          </Card>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
+                    &lt; 5ms
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
+                    API LATENCY
+                  </span>
+                </div>
 
-          {/* Card 6 */}
-          <Card className="p-6 sm:p-7 border-[#e2e7e3]/12 bg-[#15140e]/80 hover:border-[#e2e7e3]/30 transition-all group shadow-xl">
-            <div className="h-12 w-12 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-5 group-hover:scale-105 transition-transform">
-              <ShieldCheck className="h-6 w-6" />
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold font-mono text-[#e2e7e3]">
+                    100%
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#889089]">
+                    PARSER ACCURACY
+                  </span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-lg font-bold text-[#e2e7e3] mb-2">
-              OAuth & Instant Demo Mode
-            </h3>
-            <p className="text-sm text-[#a6aea7] leading-relaxed">
-              Integrated Auth.js (NextAuth v5) with Google OAuth for team members and one-click instant demo mode for rapid reviewer access.
-            </p>
-          </Card>
+
+            {/* Card 2: Live Latency Telemetry Graph (5 cols) */}
+            <div className="lg:col-span-5 rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+              <div>
+                {/* Icon */}
+                <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
+                  <Zap className="h-5 w-5 text-[#e2e7e3]" />
+                </div>
+
+                {/* Title & Description */}
+                <h3 className="text-xl sm:text-2xl font-bold text-[#e2e7e3] tracking-tight">
+                  Live Latency Telemetry
+                </h3>
+                <p className="text-sm text-[#a6aea7] mt-2.5 leading-relaxed font-normal">
+                  Real-time latency charting, statistical percentiles (P95, Avg, Min, Max), and automatic anomaly spike detection.
+                </p>
+              </div>
+
+              {/* Glowing SVG Waveform Chart */}
+              <div className="pt-6 mt-6 border-t border-[#e2e7e3]/10">
+                <div className="flex items-center justify-between text-xs font-mono mb-2">
+                  <span className="text-[#889089]">Response Latency</span>
+                  <span className="text-emerald-400 font-bold">42.5 ms Peak</span>
+                </div>
+
+                {/* SVG Graph Wave */}
+                <div className="h-20 w-full relative overflow-hidden rounded-xl bg-[#0e0d08]/60 p-2 flex items-end">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="emeraldGraphGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#34d399" stopOpacity="0.45" />
+                        <stop offset="100%" stopColor="#34d399" stopOpacity="0.0" />
+                      </linearGradient>
+                    </defs>
+                    {/* Gradient Fill */}
+                    <polygon
+                      points="0,60 0,40 30,35 60,42 90,28 120,45 150,20 180,38 210,12 240,32 270,18 300,25 300,60"
+                      fill="url(#emeraldGraphGradient)"
+                    />
+                    {/* Glowing Line */}
+                    <polyline
+                      points="0,40 30,35 60,42 90,28 120,45 150,20 180,38 210,12 240,32 270,18 300,25"
+                      fill="none"
+                      stroke="#34d399"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 2: 3 Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 3: Multi-Service Catalog */}
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+              <div>
+                <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
+                  <Database className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#e2e7e3] tracking-tight">
+                  Multi-Service Catalog
+                </h3>
+                <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
+                  Organize microservices into dedicated registered catalog items with active heartbeat and metadata indexing.
+                </p>
+              </div>
+
+              {/* Tag Pills */}
+              <div className="flex flex-wrap items-center gap-2 pt-6 mt-6 border-t border-[#e2e7e3]/10">
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  payment-svc
+                </span>
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  auth-svc
+                </span>
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-emerald-500/10 border border-emerald-500/25 text-emerald-300">
+                  Healthy &lt;35ms
+                </span>
+              </div>
+            </div>
+
+            {/* Card 4: Traffic Simulator Engine */}
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+              <div>
+                <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
+                  <Cpu className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#e2e7e3] tracking-tight">
+                  Traffic Simulator Engine
+                </h3>
+                <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
+                  Built-in multi-service telemetry simulator emitting concurrent traffic ticks, error rate spikes, and REST control hooks.
+                </p>
+              </div>
+
+              {/* Live Pill */}
+              <div className="pt-6 mt-6 border-t border-[#e2e7e3]/10">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                  ~500ms telemetry tick
+                </span>
+              </div>
+            </div>
+
+            {/* Card 5: Threshold Guard & Auth */}
+            <div className="rounded-3xl border border-[#e2e7e3]/12 bg-[#14130d] p-7 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#e2e7e3]/30 transition-all group">
+              <div>
+                <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] mb-6 shadow-sm">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#e2e7e3] tracking-tight">
+                  Threshold Guard & Auth
+                </h3>
+                <p className="text-sm text-[#a6aea7] mt-2 leading-relaxed font-normal">
+                  Autonomous background alerts whenever error counts exceed limits, backed by Google OAuth & JWT session security.
+                </p>
+              </div>
+
+              {/* Tag Pills */}
+              <div className="flex flex-wrap items-center gap-2 pt-6 mt-6 border-t border-[#e2e7e3]/10">
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  OAuth 2.0
+                </span>
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-rose-500/10 border border-rose-500/25 text-rose-300">
+                  Incident Alert
+                </span>
+                <span className="px-3 py-1 rounded-lg text-xs font-mono bg-[#1c1a12] border border-[#e2e7e3]/12 text-[#a6aea7]">
+                  Cron 60s
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
