@@ -277,156 +277,140 @@ npm run simulate
         </div>
       </section>
 
-      {/* High-Performance Telemetry Engine Metrics Grid (Extra Large Blocks) */}
-      <section className="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      {/* High-Performance Telemetry Engine Metrics Grid */}
+      <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {/* Card 1: Ingestion Latency */}
-          <div className="relative group rounded-[32px] border border-[#e2e7e3]/15 bg-[#15140e] p-8 sm:p-10 backdrop-blur-xl shadow-2xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.01] flex flex-col justify-between min-h-[300px] overflow-hidden">
+          <div className="relative group rounded-3xl border border-[#e2e7e3]/15 bg-[#15140e] p-7 sm:p-8 min-h-[270px] flex flex-col justify-between backdrop-blur-xl shadow-2xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.02] overflow-hidden">
             {/* Top Accent Light */}
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#e2e7e3]/60 to-transparent" />
-            
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e2e7e3]/40 to-transparent" />
             <div>
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3.5">
-                  <div className="h-12 w-12 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-md">
-                    <Zap className="h-6 w-6 text-[#e2e7e3]" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-sm">
+                    <Zap className="h-5 w-5 text-[#e2e7e3]" />
                   </div>
-                  <div>
-                    <span className="text-sm sm:text-base font-bold text-[#e2e7e3] tracking-wide uppercase">
-                      Ingestion Latency
-                    </span>
-                    <p className="text-xs text-[#889089]">Ultra-fast event pipeline</p>
-                  </div>
+                  <span className="text-sm font-bold text-[#a6aea7] tracking-wider uppercase">
+                    Latency
+                  </span>
                 </div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-3 py-1 rounded-full">
-                  Sub-5ms
+                  Ultra Fast
                 </span>
               </div>
 
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono text-[#e2e7e3] tracking-tight my-4">
-                &lt; 5<span className="text-3xl sm:text-4xl font-normal text-[#889089]">ms</span>
+              <div className="text-4xl sm:text-5xl font-bold font-mono text-[#e2e7e3] tracking-tight my-2">
+                &lt; 5<span className="text-xl sm:text-2xl font-normal text-[#889089]">ms</span>
               </div>
 
-              <p className="text-sm sm:text-base text-[#a6aea7] font-normal leading-relaxed">
-                Asynchronous event serialization with batching buffers. Telemetry is ingested and indexed without degrading microservice throughput.
+              <p className="text-sm text-[#a6aea7] mt-3 font-normal leading-relaxed">
+                Sub-millisecond ingestion pipeline with non-blocking async serialization.
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs sm:text-sm font-mono text-[#889089]">
-              <span>Ingestion SLA Guarantee</span>
-              <span className="text-emerald-400 font-bold">99.99% Uptime</span>
+            <div className="mt-5 pt-3.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs font-mono text-[#889089]">
+              <span>Ingestion SLA</span>
+              <span className="text-emerald-400 font-semibold">99.99%</span>
             </div>
           </div>
 
           {/* Card 2: Real-time Polling Stream */}
-          <div className="relative group rounded-[32px] border border-emerald-500/25 bg-[#15140e] p-8 sm:p-10 backdrop-blur-xl shadow-2xl hover:border-emerald-500/40 transition-all hover:scale-[1.01] flex flex-col justify-between min-h-[300px] overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent" />
-            
+          <div className="relative group rounded-3xl border border-emerald-500/25 bg-[#15140e] p-7 sm:p-8 min-h-[270px] flex flex-col justify-between backdrop-blur-xl shadow-2xl hover:border-emerald-500/40 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
             <div>
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3.5">
-                  <div className="h-12 w-12 rounded-2xl bg-[#1c1a12] border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-md">
-                    <Activity className="h-6 w-6 animate-pulse" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-sm">
+                    <Activity className="h-5 w-5 animate-pulse" />
                   </div>
-                  <div>
-                    <span className="text-sm sm:text-base font-bold text-[#e2e7e3] tracking-wide uppercase">
-                      Live Telemetry Stream
-                    </span>
-                    <p className="text-xs text-[#889089]">Continuous dynamic updates</p>
-                  </div>
+                  <span className="text-sm font-bold text-[#a6aea7] tracking-wider uppercase">
+                    Stream
+                  </span>
                 </div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  Active Polling
+                  Live
                 </span>
               </div>
 
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono text-emerald-400 tracking-tight my-4">
-                3.0<span className="text-3xl sm:text-4xl font-normal text-emerald-400/70">s</span>
+              <div className="text-4xl sm:text-5xl font-bold font-mono text-emerald-400 tracking-tight my-2">
+                3.0<span className="text-xl sm:text-2xl font-normal text-emerald-400/70">s</span>
               </div>
 
-              <p className="text-sm sm:text-base text-[#a6aea7] font-normal leading-relaxed">
-                Zero-overhead 3-second live polling stream updates logs, error counters, and time-series area charts in real-time across client dashboards.
+              <p className="text-sm text-[#a6aea7] mt-3 font-normal leading-relaxed">
+                Continuous live polling stream updating logs and graphs dynamically.
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs sm:text-sm font-mono text-[#889089]">
-              <span>Stream Refresh Rate</span>
-              <span className="text-emerald-400 font-bold">Continuous (3000ms)</span>
+            <div className="mt-5 pt-3.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs font-mono text-[#889089]">
+              <span>Auto-refresh</span>
+              <span className="text-emerald-400 font-semibold">Active</span>
             </div>
           </div>
 
           {/* Card 3: Type Safety & SDK */}
-          <div className="relative group rounded-[32px] border border-[#e2e7e3]/15 bg-[#15140e] p-8 sm:p-10 backdrop-blur-xl shadow-2xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.01] flex flex-col justify-between min-h-[300px] overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#e2e7e3]/60 to-transparent" />
-            
+          <div className="relative group rounded-3xl border border-[#e2e7e3]/15 bg-[#15140e] p-7 sm:p-8 min-h-[270px] flex flex-col justify-between backdrop-blur-xl shadow-2xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e2e7e3]/40 to-transparent" />
             <div>
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3.5">
-                  <div className="h-12 w-12 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-md">
-                    <ShieldCheck className="h-6 w-6 text-[#e2e7e3]" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-[#e2e7e3]/15 flex items-center justify-center text-[#e2e7e3] shadow-sm">
+                    <ShieldCheck className="h-5 w-5 text-[#e2e7e3]" />
                   </div>
-                  <div>
-                    <span className="text-sm sm:text-base font-bold text-[#e2e7e3] tracking-wide uppercase">
-                      TypeScript Client SDK
-                    </span>
-                    <p className="text-xs text-[#889089]">Compile-time schema safety</p>
-                  </div>
+                  <span className="text-sm font-bold text-[#a6aea7] tracking-wider uppercase">
+                    TypeScript
+                  </span>
                 </div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-3 py-1 rounded-full">
-                  Zero-Config
+                  Type-Safe
                 </span>
               </div>
 
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono text-[#e2e7e3] tracking-tight my-4">
-                100<span className="text-3xl sm:text-4xl font-normal text-[#889089]">%</span>
+              <div className="text-4xl sm:text-5xl font-bold font-mono text-[#e2e7e3] tracking-tight my-2">
+                100<span className="text-xl sm:text-2xl font-normal text-[#889089]">%</span>
               </div>
 
-              <p className="text-sm sm:text-base text-[#a6aea7] font-normal leading-relaxed">
-                Strongly-typed SDK with automatic retry logic, graceful network degradation, and zero external runtime dependencies.
+              <p className="text-sm text-[#a6aea7] mt-3 font-normal leading-relaxed">
+                Complete compile-time type validation, auto-retry, and lightweight payloads.
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs sm:text-sm font-mono text-[#889089]">
-              <span>Runtime Validation</span>
-              <span className="text-[#e2e7e3] font-bold">Strict Type Checking</span>
+            <div className="mt-5 pt-3.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs font-mono text-[#889089]">
+              <span>Runtime Safety</span>
+              <span className="text-[#e2e7e3] font-semibold">Strict</span>
             </div>
           </div>
 
           {/* Card 4: Background Cron Engine */}
-          <div className="relative group rounded-[32px] border border-amber-500/25 bg-[#15140e] p-8 sm:p-10 backdrop-blur-xl shadow-2xl hover:border-amber-500/40 transition-all hover:scale-[1.01] flex flex-col justify-between min-h-[300px] overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
-            
+          <div className="relative group rounded-3xl border border-amber-500/25 bg-[#15140e] p-7 sm:p-8 min-h-[270px] flex flex-col justify-between backdrop-blur-xl shadow-2xl hover:border-amber-500/40 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
             <div>
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3.5">
-                  <div className="h-12 w-12 rounded-2xl bg-[#1c1a12] border border-amber-500/25 flex items-center justify-center text-amber-400 shadow-md">
-                    <BellRing className="h-6 w-6" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-11 w-11 rounded-2xl bg-[#1c1a12] border border-amber-500/25 flex items-center justify-center text-amber-400 shadow-sm">
+                    <BellRing className="h-5 w-5" />
                   </div>
-                  <div>
-                    <span className="text-sm sm:text-base font-bold text-[#e2e7e3] tracking-wide uppercase">
-                      Autonomous Alert Engine
-                    </span>
-                    <p className="text-xs text-[#889089]">Background cron daemon</p>
-                  </div>
+                  <span className="text-sm font-bold text-[#a6aea7] tracking-wider uppercase">
+                    Cron Daemon
+                  </span>
                 </div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full">
                   node-cron
                 </span>
               </div>
 
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono text-amber-400 tracking-tight my-4">
-                60<span className="text-3xl sm:text-4xl font-normal text-amber-400/70">s</span>
+              <div className="text-4xl sm:text-5xl font-bold font-mono text-amber-400 tracking-tight my-2">
+                60<span className="text-xl sm:text-2xl font-normal text-amber-400/70">s</span>
               </div>
 
-              <p className="text-sm sm:text-base text-[#a6aea7] font-normal leading-relaxed">
-                Background daemon checks threshold rules against PostgreSQL metrics and log volumes every minute, generating real-time incident notifications.
+              <p className="text-sm text-[#a6aea7] mt-3 font-normal leading-relaxed">
+                Autonomous background worker evaluating error rate and latency anomalies.
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs sm:text-sm font-mono text-[#889089]">
-              <span>Daemon Schedule</span>
-              <span className="text-amber-400 font-bold">* * * * * (Every 60s)</span>
+            <div className="mt-5 pt-3.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-xs font-mono text-[#889089]">
+              <span>Schedule</span>
+              <span className="text-amber-400 font-semibold">* * * * *</span>
             </div>
           </div>
         </div>
