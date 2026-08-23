@@ -107,38 +107,43 @@ export function AlertRulesViewer() {
   // Toggle Rule Status (Enable/Disable)
   const handleToggleRule = async (ruleId: string, currentEnabled: boolean) => {
     try {
+      setRules((prev) =>
+        prev.map((r) => (r.id === ruleId ? { ...r, enabled: !currentEnabled } : r))
+      );
+
       const res = await fetch('/api/alerts/rules', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: ruleId, enabled: !currentEnabled }),
       });
 
-      if (res.ok) {
-        setRules((prev) =>
-          prev.map((r) => (r.id === ruleId ? { ...r, enabled: !currentEnabled } : r))
-        );
+      if (!res.ok) {
+        fetchData();
       }
     } catch (err) {
       console.error('Failed to toggle rule:', err);
+      fetchData();
     }
   };
 
-  // Delete Rule
+  // Direct Delete Rule without browser popup alert
   const handleDeleteRule = async (ruleId: string) => {
-    if (!confirm('Are you sure you want to delete this alert rule?')) return;
-
     try {
+      // Optimistically remove from UI
+      setRules((prev) => prev.filter((r) => r.id !== ruleId));
+      setNotification('Alert rule deleted successfully');
+      setTimeout(() => setNotification(null), 3000);
+
       const res = await fetch(`/api/alerts/rules?id=${ruleId}`, {
         method: 'DELETE',
       });
 
-      if (res.ok) {
-        setRules((prev) => prev.filter((r) => r.id !== ruleId));
-        setNotification('Alert rule deleted');
-        setTimeout(() => setNotification(null), 3000);
+      if (!res.ok) {
+        fetchData();
       }
     } catch (err) {
       console.error('Failed to delete rule:', err);
+      fetchData();
     }
   };
 
@@ -332,10 +337,10 @@ export function AlertRulesViewer() {
                             <span className="truncate max-w-sm">{rule.condition}</span>
                           </div>
                         </td>
-                        <td className="py-3.5 px-5 font-mono text-[#a6aea7] text-xs sm:text-[13px]">
+                        <td className="py-3.5 px-5 font-mono text-[#a6aea7] text-xs sm:text-[13px] whitespace-nowrap">
                           {rule.threshold} / {rule.windowMinutes}m
                         </td>
-                        <td className="py-3.5 px-5">
+                        <td className="py-3.5 px-5 whitespace-nowrap">
                           <button
                             onClick={() => handleToggleRule(rule.id, rule.enabled)}
                             className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border transition-colors ${
@@ -347,8 +352,8 @@ export function AlertRulesViewer() {
                             {rule.enabled ? 'Enabled' : 'Paused'}
                           </button>
                         </td>
-                        <td className="py-3.5 px-4 text-right">
-                          <Tooltip content="Delete this alert rule">
+                        <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                          <Tooltip content="Delete Rule" side="left">
                             <button
                               onClick={() => handleDeleteRule(rule.id)}
                               className="p-1.5 text-[#889089] hover:text-rose-400 hover:bg-rose-500/10 rounded-md transition-colors"
@@ -368,13 +373,13 @@ export function AlertRulesViewer() {
 
         {/* Incident Events Feed (1 Col) */}
         <div className="space-y-4">
-          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden flex flex-col h-[520px] shadow-2xl">
-            <div className="p-4 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90">
+          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden rounded-2xl flex flex-col h-[520px] shadow-2xl">
+            <div className="p-4 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90 rounded-t-2xl">
               <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
                 <AlertTriangle className="h-4 w-4" />
                 Incident Timeline ({events.length})
               </span>
-              <Tooltip content="Refresh incident feed">
+              <Tooltip content="Refresh incident feed" side="left">
                 <button
                   onClick={fetchData}
                   className="text-[#889089] hover:text-[#e2e7e3] p-1 rounded transition-colors"

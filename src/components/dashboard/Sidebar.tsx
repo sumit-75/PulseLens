@@ -167,12 +167,15 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         )}
 
         {/* API Ingestion Status */}
-        <div className="bg-[#181711]/60 border border-[#e2e7e3]/10 rounded-lg px-3.5 py-2.5 flex items-center justify-between text-xs sm:text-sm">
-          <span className="text-[#a6aea7] flex items-center gap-2 font-medium">
-            <Radio className="h-3 w-3 text-emerald-400 animate-ping" />
+        <div className="bg-[#181711] border border-[#e2e7e3]/12 rounded-xl px-3.5 py-2.5 flex items-center justify-between text-xs sm:text-sm shadow-sm">
+          <span className="text-[#a6aea7] flex items-center gap-2.5 font-medium">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
             Telemetry API
           </span>
-          <span className="text-xs text-emerald-400 font-bold uppercase">
+          <span className="text-[11px] text-emerald-400 font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
             Open
           </span>
         </div>
