@@ -1,27 +1,9 @@
 @import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/instagram-sans');
 
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('https://db.onlinewebfonts.com/t/7dd4eb9efd6ff9a17fb4d6537dbb8eb9.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('https://db.onlinewebfonts.com/t/929007f35b2e53efb27db27d6d376eb9.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instagram Sans';
-  src: url('https://db.onlinewebfonts.com/t/172e259b3f3b9c2fb4f52f36d1b80ab9.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+@theme {
+  --font-sans: 'Instagram Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Instagram Sans', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
@@ -40,11 +22,19 @@
   --radius: 0.625rem;
 }
 
-body {
+html, body {
   background-color: #0e0d08;
   color: #e2e7e3;
   font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+}
+
+*, ::before, ::after {
+  font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+button, input, select, textarea, optgroup {
+  font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Custom Sleek Scrollbar */
