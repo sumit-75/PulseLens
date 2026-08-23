@@ -3,7 +3,7 @@ import './globals.css';
 import { SessionProvider } from '@/components/providers/SessionProvider';
 
 export const metadata: Metadata = {
-  title: 'PulseLens — Mini Observability Platform',
+  title: 'PulseLens — Real-Time Observability & Telemetry Platform',
   description: 'Real-time logs, metrics time-series, and automated alert monitoring platform.',
 };
 

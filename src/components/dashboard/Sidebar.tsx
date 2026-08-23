@@ -68,7 +68,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 v1.0
               </span>
             </div>
-            <p className="text-xs text-[#a6aea7] font-medium">Mini Observability</p>
+            <p className="text-xs text-[#a6aea7] font-medium tracking-wide">Real-Time Telemetry</p>
           </div>
         </div>
 
