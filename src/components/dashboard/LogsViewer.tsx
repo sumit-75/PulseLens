@@ -163,21 +163,21 @@ export function LogsViewer() {
     switch (level.toLowerCase()) {
       case 'error':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-rose-500/10 text-rose-300 border border-rose-500/25">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-rose-500/10 text-rose-300 border border-rose-500/25 whitespace-nowrap">
             <AlertCircle className="h-3.5 w-3.5 text-rose-400" />
             error
           </span>
         );
       case 'warn':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/25">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/25 whitespace-nowrap">
             <AlertTriangle className="h-3.5 w-3.5 text-amber-400" />
             warn
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-sky-500/10 text-sky-300 border border-sky-500/20">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase bg-sky-500/10 text-sky-300 border border-sky-500/20 whitespace-nowrap">
             <Info className="h-3.5 w-3.5 text-sky-400" />
             info
           </span>
@@ -293,8 +293,8 @@ export function LogsViewer() {
       {/* KPI Stats Cards */}
       <StatsCards stats={stats} isLoading={isLoading} />
 
-      {/* Control Bar: Search & Filters */}
-      <Card className="p-4 border-[#e2e7e3]/10 bg-[#15140e]/90 shadow-xl">
+      {/* Control Bar: Search & Filters (relative z-30 with overflow-visible to prevent clipping dropdowns) */}
+      <Card className="p-4 border-[#e2e7e3]/10 bg-[#15140e]/95 shadow-xl relative z-30 overflow-visible">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5">
           {/* Search Box */}
           <div className="relative flex-1">
@@ -316,15 +316,15 @@ export function LogsViewer() {
           </div>
 
           {/* Filters Row */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 relative z-40">
             {/* shadcn Select Component for Service Filter */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 relative z-50">
               <Select
                 value={selectedService}
                 onValueChange={setSelectedService}
                 options={serviceOptions}
                 icon={<Filter className="h-3.5 w-3.5 text-[#889089]" />}
-                className="min-w-[170px]"
+                className="min-w-[190px]"
                 triggerClassName="h-10 text-xs sm:text-sm bg-[#0e0d08]"
               />
             </div>
@@ -358,8 +358,8 @@ export function LogsViewer() {
         </div>
       </Card>
 
-      {/* Logs Table / Stream View */}
-      <Card className="border-[#e2e7e3]/10 overflow-hidden bg-[#15140e]/70 shadow-2xl">
+      {/* Logs Table / Stream View (relative z-10) */}
+      <Card className="border-[#e2e7e3]/10 overflow-hidden bg-[#15140e]/70 shadow-2xl relative z-10">
         <div className="px-5 py-3.5 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90">
           <div className="flex items-center gap-2.5">
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#e2e7e3]">
@@ -381,10 +381,10 @@ export function LogsViewer() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-[#e2e7e3]/10 bg-[#0e0d08]/60 text-xs font-semibold text-[#a6aea7] uppercase tracking-wider">
-                <th className="py-3 px-5 w-32">Level</th>
-                <th className="py-3 px-5 w-44">Service</th>
-                <th className="py-3 px-5">Message</th>
-                <th className="py-3 px-5 w-48">Timestamp</th>
+                <th className="py-3 px-5 w-32 whitespace-nowrap">Level</th>
+                <th className="py-3 px-5 whitespace-nowrap min-w-[200px]">Service</th>
+                <th className="py-3 px-5 min-w-[300px]">Message</th>
+                <th className="py-3 px-5 whitespace-nowrap w-48">Timestamp</th>
                 <th className="py-3 px-4 w-12 text-right"></th>
               </tr>
             </thead>
@@ -431,11 +431,11 @@ export function LogsViewer() {
                     onClick={() => setSelectedLog(log)}
                     className="hover:bg-[#201e16] cursor-pointer transition-colors group"
                   >
-                    <td className="py-3.5 px-5 font-mono">
+                    <td className="py-3.5 px-5 font-mono whitespace-nowrap">
                       {getLevelBadge(log.level)}
                     </td>
-                    <td className="py-3.5 px-5">
-                      <span className="font-mono text-[#e2e7e3] font-semibold text-xs sm:text-[13px] bg-[#181711] px-2.5 py-1 rounded-md border border-[#e2e7e3]/12">
+                    <td className="py-3.5 px-5 whitespace-nowrap">
+                      <span className="font-mono text-[#e2e7e3] font-semibold text-xs sm:text-[13px] bg-[#181711] px-2.5 py-1 rounded-md border border-[#e2e7e3]/12 whitespace-nowrap inline-flex items-center shadow-sm">
                         {log.service}
                       </span>
                     </td>
@@ -447,7 +447,7 @@ export function LogsViewer() {
                         {timeAgo(log.timestamp)}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 text-right">
+                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
                       <ChevronRight className="h-4 w-4 text-[#889089] group-hover:text-[#e2e7e3] inline transition-transform group-hover:translate-x-1" />
                     </td>
                   </tr>

@@ -325,17 +325,17 @@ export function MetricsViewer() {
         </Card>
       )}
 
-      {/* Filter & Metric Selector Bar */}
-      <Card className="p-4 border-[#e2e7e3]/10 bg-[#15140e]/90 shadow-xl">
+      {/* Filter & Metric Selector Bar (relative z-30 with overflow-visible to prevent clipping dropdowns) */}
+      <Card className="p-4 border-[#e2e7e3]/10 bg-[#15140e]/95 shadow-xl relative z-30 overflow-visible">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5">
           {/* Service Selector via shadcn Select */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 relative z-50">
             <Select
               value={selectedService}
               onValueChange={setSelectedService}
               options={serviceOptions}
               icon={<Filter className="h-3.5 w-3.5 text-[#889089]" />}
-              className="min-w-[180px]"
+              className="min-w-[190px]"
               triggerClassName="h-10 text-xs sm:text-sm bg-[#0e0d08]"
             />
           </div>

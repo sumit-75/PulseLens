@@ -278,10 +278,10 @@ export function AlertRulesViewer() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-[#e2e7e3]/10 bg-[#0e0d08]/60 text-xs font-semibold text-[#a6aea7] uppercase tracking-wider">
-                    <th className="py-3 px-5 w-36">Service</th>
+                    <th className="py-3 px-5 whitespace-nowrap min-w-[180px]">Service</th>
                     <th className="py-3 px-5">Condition</th>
-                    <th className="py-3 px-5 w-36">Threshold</th>
-                    <th className="py-3 px-5 w-28">Status</th>
+                    <th className="py-3 px-5 w-36 whitespace-nowrap">Threshold</th>
+                    <th className="py-3 px-5 w-28 whitespace-nowrap">Status</th>
                     <th className="py-3 px-4 w-12 text-right"></th>
                   </tr>
                 </thead>
@@ -317,8 +317,8 @@ export function AlertRulesViewer() {
                   ) : (
                     rules.map((rule) => (
                       <tr key={rule.id} className="hover:bg-[#201e16] transition-colors">
-                        <td className="py-3.5 px-5 font-mono">
-                          <span className="text-[#e2e7e3] font-semibold text-xs sm:text-[13px] bg-[#181711] px-2.5 py-1 rounded-md border border-[#e2e7e3]/12">
+                        <td className="py-3.5 px-5 font-mono whitespace-nowrap">
+                          <span className="text-[#e2e7e3] font-semibold text-xs sm:text-[13px] bg-[#181711] px-2.5 py-1 rounded-md border border-[#e2e7e3]/12 whitespace-nowrap inline-flex items-center shadow-sm">
                             {rule.service}
                           </span>
                         </td>

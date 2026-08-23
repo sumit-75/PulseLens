@@ -45,13 +45,13 @@ export function Select({
   const selectedOption = options.find((opt) => opt.value === value);
 
   return (
-    <div ref={containerRef} className={cn('relative inline-block text-left', className)}>
+    <div ref={containerRef} className={cn('relative inline-block text-left z-30', className)}>
       {/* Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-[#e2e7e3]/15 bg-[#12110b] px-3 py-1.5 text-sm text-[#e2e7e3] shadow-sm transition-all hover:bg-[#181711] focus:outline-none focus:ring-2 focus:ring-[#e2e7e3]/30 active:scale-[0.99]',
+          'flex h-10 w-full items-center justify-between gap-2.5 rounded-lg border border-[#e2e7e3]/15 bg-[#12110b] px-3.5 py-2 text-sm text-[#e2e7e3] shadow-sm transition-all hover:bg-[#181711] focus:outline-none focus:ring-2 focus:ring-[#e2e7e3]/30 active:scale-[0.99] whitespace-nowrap',
           triggerClassName
         )}
       >
@@ -69,9 +69,9 @@ export function Select({
         />
       </button>
 
-      {/* Dropdown Menu Content */}
+      {/* Dropdown Menu Content with high z-index and shadow */}
       {isOpen && (
-        <div className="absolute left-0 top-full z-50 mt-1.5 max-h-60 min-w-[180px] w-full overflow-y-auto rounded-xl border border-[#e2e7e3]/15 bg-[#15140e] p-1 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-100">
+        <div className="absolute left-0 top-[calc(100%+6px)] z-[9999] max-h-64 min-w-[200px] w-full overflow-y-auto rounded-xl border border-[#e2e7e3]/20 bg-[#16150f] p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.8)] backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-100 ring-1 ring-black/40">
           {options.map((option) => {
             const isSelected = option.value === value;
             return (
@@ -83,14 +83,14 @@ export function Select({
                   setIsOpen(false);
                 }}
                 className={cn(
-                  'flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-sm text-left transition-colors font-medium',
+                  'flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm text-left transition-colors font-medium whitespace-nowrap',
                   isSelected
-                    ? 'bg-[#e2e7e3]/15 text-[#e2e7e3] font-semibold'
-                    : 'text-[#a6aea7] hover:bg-[#201e16] hover:text-[#e2e7e3]'
+                    ? 'bg-[#e2e7e3] text-[#0e0d08] font-bold shadow-sm'
+                    : 'text-[#a6aea7] hover:bg-[#232018] hover:text-[#e2e7e3]'
                 )}
               >
                 <span className="truncate">{option.label}</span>
-                {isSelected && <Check className="h-4 w-4 text-[#e2e7e3] shrink-0 ml-2" />}
+                {isSelected && <Check className="h-4 w-4 text-[#0e0d08] shrink-0 ml-2" />}
               </button>
             );
           })}
