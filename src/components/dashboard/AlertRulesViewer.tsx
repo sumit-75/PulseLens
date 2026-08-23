@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Tooltip } from '@/components/ui/tooltip';
 import { CreateRuleModal } from './CreateRuleModal';
 import { timeAgo, formatDate } from '@/lib/utils';
 
@@ -171,42 +172,46 @@ export function AlertRulesViewer() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
-            <BellRing className="h-6 w-6 text-[#e2e7e3]" />
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
+            <BellRing className="h-7 w-7 text-[#e2e7e3]" />
             Alert Rules & Background Checker
           </h1>
-          <p className="text-xs text-[#889089] mt-0.5">
-            Automated threshold conditions checked continuously every minute via node-cron.
+          <p className="text-sm sm:text-base text-[#a6aea7] mt-1 font-normal">
+            Automated threshold conditions evaluated continuously every minute via node-cron daemon.
           </p>
         </div>
 
         {/* Header Action Buttons */}
         <div className="flex items-center gap-2">
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={handleRunEvaluation}
-            disabled={isEvaluating}
-            className="text-xs gap-1.5"
-          >
-            <Zap className={`h-3.5 w-3.5 text-amber-400 ${isEvaluating ? 'animate-spin' : ''}`} />
-            <span>Check Rules Now</span>
-          </Button>
+          <Tooltip content="Evaluate active threshold rules now">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={handleRunEvaluation}
+              disabled={isEvaluating}
+              className="text-xs sm:text-sm font-medium gap-1.5 h-10 px-3.5"
+            >
+              <Zap className={`h-4 w-4 text-amber-400 ${isEvaluating ? 'animate-spin' : ''}`} />
+              <span>Check Rules Now</span>
+            </Button>
+          </Tooltip>
 
-          <Button
-            size="sm"
-            onClick={() => setIsModalOpen(true)}
-            className="text-xs gap-1.5"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            <span>Create Alert Rule</span>
-          </Button>
+          <Tooltip content="Create new error count or latency threshold rule">
+            <Button
+              size="sm"
+              onClick={() => setIsModalOpen(true)}
+              className="text-xs sm:text-sm font-semibold gap-1.5 h-10 px-3.5"
+            >
+              <Plus className="h-4 w-4" />
+              <span>Create Alert Rule</span>
+            </Button>
+          </Tooltip>
         </div>
       </div>
 
       {/* Notification Toast */}
       {notification && (
-        <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#181711] border border-[#e2e7e3]/20 text-[#e2e7e3] text-xs animate-in fade-in duration-150">
+        <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#181711] border border-[#e2e7e3]/20 text-[#e2e7e3] text-sm animate-in fade-in duration-150">
           <Sparkles className="h-4 w-4 text-[#e2e7e3] shrink-0" />
           <span>{notification}</span>
         </div>
@@ -214,44 +219,44 @@ export function AlertRulesViewer() {
 
       {/* Alert KPI Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-        <Card className="p-4 border-[#e2e7e3]/10 bg-gradient-to-br from-[#e2e7e3]/8 to-transparent bg-[#15140e]/80">
-          <div className="flex items-center justify-between text-xs text-[#889089] mb-1">
+        <Card className="p-4 border-[#e2e7e3]/10 bg-gradient-to-br from-[#e2e7e3]/8 to-transparent bg-[#15140e]/80 shadow-lg">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#a6aea7] uppercase tracking-wider mb-1">
             <span>Configured Rules</span>
             <BellRing className="h-4 w-4 text-[#e2e7e3]" />
           </div>
-          <div className="text-2xl font-bold text-[#e2e7e3] font-mono">{rules.length}</div>
-          <p className="text-[11px] text-[#889089] mt-1">Threshold definitions</p>
+          <div className="text-2xl sm:text-3xl font-bold text-[#e2e7e3] font-mono mt-1">{rules.length}</div>
+          <p className="text-xs text-[#889089] mt-1">Threshold definitions</p>
         </Card>
 
-        <Card className="p-4 border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-transparent bg-[#15140e]/80">
-          <div className="flex items-center justify-between text-xs text-[#889089] mb-1">
+        <Card className="p-4 border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-transparent bg-[#15140e]/80 shadow-lg">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#a6aea7] uppercase tracking-wider mb-1">
             <span>Active Rules</span>
             <Radio className="h-4 w-4 text-emerald-400 animate-pulse" />
           </div>
-          <div className="text-2xl font-bold text-emerald-400 font-mono">
+          <div className="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono mt-1">
             {activeRulesCount}
           </div>
-          <p className="text-[11px] text-[#889089] mt-1">Evaluated every 60s by cron</p>
+          <p className="text-xs text-[#889089] mt-1">Evaluated every 60s by cron</p>
         </Card>
 
-        <Card className="p-4 border-rose-500/25 bg-gradient-to-br from-rose-500/10 to-transparent bg-[#15140e]/80">
-          <div className="flex items-center justify-between text-xs text-[#889089] mb-1">
+        <Card className="p-4 border-rose-500/25 bg-gradient-to-br from-rose-500/10 to-transparent bg-[#15140e]/80 shadow-lg">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#a6aea7] uppercase tracking-wider mb-1">
             <span>Triggered Incidents</span>
             <AlertTriangle className="h-4 w-4 text-rose-400" />
           </div>
-          <div className="text-2xl font-bold text-rose-400 font-mono">
+          <div className="text-2xl sm:text-3xl font-bold text-rose-400 font-mono mt-1">
             {events.length}
           </div>
-          <p className="text-[11px] text-[#889089] mt-1">Recorded violation events</p>
+          <p className="text-xs text-[#889089] mt-1">Recorded violation events</p>
         </Card>
 
-        <Card className="p-4 border-[#e2e7e3]/10 bg-gradient-to-br from-[#e2e7e3]/4 to-transparent bg-[#15140e]/80">
-          <div className="flex items-center justify-between text-xs text-[#889089] mb-1">
+        <Card className="p-4 border-[#e2e7e3]/10 bg-gradient-to-br from-[#e2e7e3]/4 to-transparent bg-[#15140e]/80 shadow-lg">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#a6aea7] uppercase tracking-wider mb-1">
             <span>Cron Interval</span>
             <Clock className="h-4 w-4 text-[#889089]" />
           </div>
-          <div className="text-2xl font-bold text-[#e2e7e3] font-mono">1 min</div>
-          <p className="text-[11px] text-[#889089] mt-1">node-cron (* * * * *)</p>
+          <div className="text-2xl sm:text-3xl font-bold text-[#e2e7e3] font-mono mt-1">1 min</div>
+          <p className="text-xs text-[#889089] mt-1">node-cron (* * * * *)</p>
         </Card>
       </div>
 
@@ -259,81 +264,81 @@ export function AlertRulesViewer() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Rules Table (2 Cols) */}
         <div className="lg:col-span-2 space-y-4">
-          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden">
+          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden shadow-2xl">
             <div className="p-4 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#a6aea7]">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#e2e7e3]">
                 Configured Rules ({rules.length})
               </span>
-              <span className="text-[11px] text-[#889089] font-mono">
+              <span className="text-xs text-[#889089] font-mono">
                 Auto-evaluates every minute
               </span>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-[#e2e7e3]/10 bg-[#0e0d08]/60 text-[11px] font-medium text-[#889089] uppercase tracking-wider">
-                    <th className="py-2.5 px-4 w-32">Service</th>
-                    <th className="py-2.5 px-4">Condition</th>
-                    <th className="py-2.5 px-4 w-28">Threshold</th>
-                    <th className="py-2.5 px-4 w-24">Status</th>
-                    <th className="py-2.5 px-3 w-12 text-right"></th>
+                  <tr className="border-b border-[#e2e7e3]/10 bg-[#0e0d08]/60 text-xs font-semibold text-[#a6aea7] uppercase tracking-wider">
+                    <th className="py-3 px-5 w-36">Service</th>
+                    <th className="py-3 px-5">Condition</th>
+                    <th className="py-3 px-5 w-36">Threshold</th>
+                    <th className="py-3 px-5 w-28">Status</th>
+                    <th className="py-3 px-4 w-12 text-right"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#e2e7e3]/6">
+                <tbody className="divide-y divide-[#e2e7e3]/8">
                   {isLoading ? (
                     Array.from({ length: 3 }).map((_, i) => (
                       <tr key={i} className="animate-pulse">
-                        <td className="py-3 px-4">
+                        <td className="py-3.5 px-5">
+                          <div className="h-5 w-24 bg-[#232018] rounded" />
+                        </td>
+                        <td className="py-3.5 px-5">
+                          <div className="h-5 w-56 bg-[#232018] rounded" />
+                        </td>
+                        <td className="py-3.5 px-5">
                           <div className="h-5 w-20 bg-[#232018] rounded" />
                         </td>
-                        <td className="py-3 px-4">
-                          <div className="h-5 w-48 bg-[#232018] rounded" />
+                        <td className="py-3.5 px-5">
+                          <div className="h-6 w-16 bg-[#232018] rounded-full" />
                         </td>
-                        <td className="py-3 px-4">
-                          <div className="h-5 w-16 bg-[#232018] rounded" />
-                        </td>
-                        <td className="py-3 px-4">
-                          <div className="h-5 w-12 bg-[#232018] rounded" />
-                        </td>
-                        <td className="py-3 px-3"></td>
+                        <td className="py-3.5 px-4"></td>
                       </tr>
                     ))
                   ) : rules.length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="py-12 text-center text-[#889089]">
-                        <BellRing className="h-8 w-8 text-[#889089]/60 mx-auto mb-2" />
-                        <p className="font-medium text-[#e2e7e3]">No alert rules configured</p>
-                        <p className="text-xs text-[#889089] mt-1 max-w-sm mx-auto">
+                      <td colSpan={5} className="py-14 text-center text-[#889089]">
+                        <BellRing className="h-10 w-10 text-[#889089]/50 mx-auto mb-2.5" />
+                        <p className="text-base font-semibold text-[#e2e7e3]">No alert rules configured</p>
+                        <p className="text-sm text-[#a6aea7] mt-1 max-w-md mx-auto">
                           Click &quot;Create Alert Rule&quot; to set up error count or metric latency threshold monitoring.
                         </p>
                       </td>
                     </tr>
                   ) : (
                     rules.map((rule) => (
-                      <tr key={rule.id} className="hover:bg-[#232018]/60 transition-colors">
-                        <td className="py-3 px-4 font-mono">
-                          <span className="text-[#e2e7e3] font-medium text-[11px] bg-[#181711] px-2 py-0.5 rounded border border-[#e2e7e3]/10">
+                      <tr key={rule.id} className="hover:bg-[#201e16] transition-colors">
+                        <td className="py-3.5 px-5 font-mono">
+                          <span className="text-[#e2e7e3] font-semibold text-xs sm:text-[13px] bg-[#181711] px-2.5 py-1 rounded-md border border-[#e2e7e3]/12">
                             {rule.service}
                           </span>
                         </td>
-                        <td className="py-3 px-4 font-mono text-[#e2e7e3]">
-                          <div className="flex items-center gap-1.5">
+                        <td className="py-3.5 px-5 font-mono text-[13.5px] text-[#e2e7e3]">
+                          <div className="flex items-center gap-2">
                             {rule.logLevel ? (
-                              <Terminal className="h-3.5 w-3.5 text-[#889089] shrink-0" />
+                              <Terminal className="h-4 w-4 text-[#889089] shrink-0" />
                             ) : (
-                              <BarChart3 className="h-3.5 w-3.5 text-[#889089] shrink-0" />
+                              <BarChart3 className="h-4 w-4 text-[#889089] shrink-0" />
                             )}
-                            <span className="truncate max-w-xs">{rule.condition}</span>
+                            <span className="truncate max-w-sm">{rule.condition}</span>
                           </div>
                         </td>
-                        <td className="py-3 px-4 font-mono text-[#a6aea7] text-[11px]">
+                        <td className="py-3.5 px-5 font-mono text-[#a6aea7] text-xs sm:text-[13px]">
                           {rule.threshold} / {rule.windowMinutes}m
                         </td>
-                        <td className="py-3 px-4">
+                        <td className="py-3.5 px-5">
                           <button
                             onClick={() => handleToggleRule(rule.id, rule.enabled)}
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider border transition-colors ${
+                            className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border transition-colors ${
                               rule.enabled
                                 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/25'
                                 : 'bg-[#181711] text-[#889089] border-[#e2e7e3]/15 hover:bg-[#232018]'
@@ -342,14 +347,15 @@ export function AlertRulesViewer() {
                             {rule.enabled ? 'Enabled' : 'Paused'}
                           </button>
                         </td>
-                        <td className="py-3 px-3 text-right">
-                          <button
-                            onClick={() => handleDeleteRule(rule.id)}
-                            className="p-1 text-[#889089] hover:text-rose-400 rounded transition-colors"
-                            title="Delete Rule"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
+                        <td className="py-3.5 px-4 text-right">
+                          <Tooltip content="Delete this alert rule">
+                            <button
+                              onClick={() => handleDeleteRule(rule.id)}
+                              className="p-1.5 text-[#889089] hover:text-rose-400 hover:bg-rose-500/10 rounded-md transition-colors"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </Tooltip>
                         </td>
                       </tr>
                     ))
@@ -362,19 +368,20 @@ export function AlertRulesViewer() {
 
         {/* Incident Events Feed (1 Col) */}
         <div className="space-y-4">
-          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden flex flex-col h-[520px]">
+          <Card className="border-[#e2e7e3]/10 bg-[#15140e]/80 overflow-hidden flex flex-col h-[520px] shadow-2xl">
             <div className="p-4 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90">
-              <span className="text-xs font-semibold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
-                <AlertTriangle className="h-3.5 w-3.5" />
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                <AlertTriangle className="h-4 w-4" />
                 Incident Timeline ({events.length})
               </span>
-              <button
-                onClick={fetchData}
-                className="text-[#889089] hover:text-[#e2e7e3] text-xs"
-                title="Refresh feed"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-              </button>
+              <Tooltip content="Refresh incident feed">
+                <button
+                  onClick={fetchData}
+                  className="text-[#889089] hover:text-[#e2e7e3] p-1 rounded transition-colors"
+                >
+                  <RefreshCw className="h-4 w-4" />
+                </button>
+              </Tooltip>
             </div>
 
             {/* Scrollable Events Feed */}
@@ -388,36 +395,36 @@ export function AlertRulesViewer() {
                 ))
               ) : events.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[#889089]">
-                  <CheckCircle2 className="h-8 w-8 text-emerald-400 mb-2" />
-                  <p className="text-sm font-medium text-[#e2e7e3]">All services healthy</p>
-                  <p className="text-xs text-[#889089] mt-1 max-w-xs">
-                    No threshold violations recorded in the event log.
+                  <CheckCircle2 className="h-10 w-10 text-emerald-400 mb-2.5" />
+                  <p className="text-base font-semibold text-[#e2e7e3]">All services healthy</p>
+                  <p className="text-sm text-[#a6aea7] mt-1 max-w-xs">
+                    No threshold violations recorded in the incident event log.
                   </p>
                 </div>
               ) : (
                 events.map((event) => (
                   <div
                     key={event.id}
-                    className="p-3 rounded-xl border border-rose-500/20 bg-rose-500/5 hover:border-rose-500/30 transition-all text-xs"
+                    className="p-3.5 rounded-xl border border-rose-500/25 bg-rose-500/5 hover:border-rose-500/40 transition-all"
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[#e2e7e3] font-semibold text-[11px]">
+                      <span className="font-mono text-[#e2e7e3] font-bold text-xs sm:text-[13px]">
                         {event.rule?.service || 'service'}
                       </span>
                       <span
                         title={formatDate(event.triggeredAt)}
-                        className="text-[10px] text-[#889089] font-mono"
+                        className="text-xs text-[#889089] font-mono"
                       >
                         {timeAgo(event.triggeredAt)}
                       </span>
                     </div>
 
-                    <p className="text-[#e2e7e3]/90 font-mono text-[11px] leading-relaxed">
+                    <p className="text-[#e2e7e3] font-mono text-xs sm:text-[13px] leading-relaxed">
                       {event.details}
                     </p>
 
                     {event.rule?.condition && (
-                      <div className="mt-2 pt-1.5 border-t border-rose-500/10 text-[10px] text-[#889089] font-mono truncate">
+                      <div className="mt-2 pt-1.5 border-t border-rose-500/10 text-xs text-[#889089] font-mono truncate">
                         Rule: {event.rule.condition}
                       </div>
                     )}

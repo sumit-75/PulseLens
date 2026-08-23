@@ -17,6 +17,7 @@ import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Tooltip } from '@/components/ui/tooltip';
 
 interface SidebarProps {
   activeTab: 'logs' | 'metrics' | 'alerts' | 'services';
@@ -32,7 +33,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       label: 'Log Viewer',
       icon: Terminal,
       badge: 'Live',
-      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      badgeColor: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
     },
     {
       id: 'metrics' as const,
@@ -52,29 +53,29 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   ];
 
   return (
-    <aside className="w-64 border-r border-[#e2e7e3]/10 bg-[#12110b]/90 backdrop-blur-xl flex flex-col justify-between p-4 shrink-0 select-none">
+    <aside className="w-64 border-r border-[#e2e7e3]/10 bg-[#12110b]/95 backdrop-blur-xl flex flex-col justify-between p-4 shrink-0 select-none">
       <div>
         {/* Brand */}
         <div className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-[#e2e7e3]/10 pb-5">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-lg shadow-[#e2e7e3]/10 text-[#0e0d08]">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-lg shadow-[#e2e7e3]/10 text-[#0e0d08]">
             <Activity className="h-5 w-5 animate-pulse font-bold" />
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-base tracking-tight text-[#e2e7e3]">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-lg tracking-tight text-[#e2e7e3]">
                 PulseLens
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-1.5 py-0.2 rounded">
+              <span className="text-[11px] uppercase font-bold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-1.5 py-0.5 rounded">
                 v1.0
               </span>
             </div>
-            <p className="text-[11px] text-[#889089]">Mini Observability</p>
+            <p className="text-xs text-[#a6aea7] font-medium">Mini Observability</p>
           </div>
         </div>
 
         {/* Navigation items */}
-        <nav className="space-y-1.5">
-          <div className="text-[10px] font-semibold uppercase tracking-wider text-[#889089] px-3 mb-2">
+        <nav className="space-y-2">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#889089] px-3 mb-2">
             Telemetry Platform
           </div>
 
@@ -86,17 +87,17 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
                 className={cn(
-                  'w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-all group',
+                  'w-full flex items-center justify-between px-3.5 py-3 rounded-lg text-sm font-semibold transition-all group',
                   isActive
-                    ? 'bg-[#e2e7e3]/12 text-[#e2e7e3] border border-[#e2e7e3]/25 shadow-sm'
-                    : 'text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12]'
+                    ? 'bg-[#e2e7e3] text-[#0e0d08] shadow-md'
+                    : 'text-[#a6aea7] hover:text-[#e2e7e3] hover:bg-[#1c1a12]'
                 )}
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-3">
                   <Icon
                     className={cn(
                       'h-4 w-4 transition-colors',
-                      isActive ? 'text-[#e2e7e3]' : 'text-[#889089] group-hover:text-[#e2e7e3]'
+                      isActive ? 'text-[#0e0d08]' : 'text-[#889089] group-hover:text-[#e2e7e3]'
                     )}
                   />
                   <span>{item.label}</span>
@@ -104,8 +105,8 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 {item.badge && (
                   <span
                     className={cn(
-                      'text-[9px] font-medium border px-1.5 py-0.5 rounded-full',
-                      item.badgeColor
+                      'text-[10px] font-bold border px-2 py-0.5 rounded-full',
+                      isActive ? 'bg-[#0e0d08]/15 border-[#0e0d08]/25 text-[#0e0d08]' : item.badgeColor
                     )}
                   >
                     {item.badge}
@@ -121,56 +122,57 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       <div className="space-y-3 pt-4 border-t border-[#e2e7e3]/10">
         {/* User Profile Card */}
         {status === 'authenticated' && session?.user ? (
-          <div className="p-2.5 rounded-xl bg-[#181711] border border-[#e2e7e3]/10 flex items-center justify-between gap-2">
+          <div className="p-3 rounded-xl bg-[#181711] border border-[#e2e7e3]/12 flex items-center justify-between gap-2 shadow-md">
             <div className="flex items-center gap-2.5 min-w-0">
               {session.user.image ? (
                 <Image
                   src={session.user.image}
                   alt={session.user.name || 'User'}
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 rounded-full border border-[#e2e7e3]/30 object-cover shrink-0"
+                  width={34}
+                  height={34}
+                  className="h-8.5 w-8.5 rounded-full border border-[#e2e7e3]/30 object-cover shrink-0"
                 />
               ) : (
-                <div className="h-8 w-8 rounded-full bg-[#e2e7e3]/15 border border-[#e2e7e3]/30 flex items-center justify-center text-[#e2e7e3] text-xs font-bold shrink-0">
+                <div className="h-8.5 w-8.5 rounded-full bg-[#e2e7e3]/15 border border-[#e2e7e3]/30 flex items-center justify-center text-[#e2e7e3] text-sm font-bold shrink-0">
                   {session.user.name?.charAt(0) || <User className="h-4 w-4" />}
                 </div>
               )}
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold text-[#e2e7e3] truncate">
+                <p className="text-xs sm:text-sm font-bold text-[#e2e7e3] truncate">
                   {session.user.name || 'Engineer'}
                 </p>
-                <p className="text-[10px] text-[#889089] font-mono truncate">
+                <p className="text-[11px] text-[#889089] font-mono truncate">
                   {session.user.email || 'engineer@pulselens.io'}
                 </p>
               </div>
             </div>
 
-            <button
-              onClick={() => signOut({ callbackUrl: '/login' })}
-              title="Sign Out"
-              className="p-1.5 text-[#889089] hover:text-rose-400 hover:bg-[#232018] rounded-lg transition-colors shrink-0"
-            >
-              <LogOut className="h-4 w-4" />
-            </button>
+            <Tooltip content="Sign Out">
+              <button
+                onClick={() => signOut({ callbackUrl: '/login' })}
+                className="p-2 text-[#889089] hover:text-rose-400 hover:bg-[#232018] rounded-lg transition-colors shrink-0"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </Tooltip>
           </div>
         ) : (
           <Link
             href="/login"
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#e2e7e3]/10 border border-[#e2e7e3]/20 text-[#e2e7e3] hover:bg-[#e2e7e3]/15 text-xs font-medium transition-all"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-[#e2e7e3] text-[#0e0d08] hover:bg-[#f0f4f1] text-xs sm:text-sm font-bold transition-all shadow-md"
           >
-            <LogIn className="h-3.5 w-3.5" />
+            <LogIn className="h-4 w-4" />
             <span>Sign In to Dashboard</span>
           </Link>
         )}
 
         {/* API Ingestion Status */}
-        <div className="bg-[#181711]/60 border border-[#e2e7e3]/10 rounded-lg px-3 py-2 flex items-center justify-between text-xs">
-          <span className="text-[#889089] flex items-center gap-1.5 text-[11px]">
-            <Radio className="h-2.5 w-2.5 text-emerald-400 animate-ping" />
+        <div className="bg-[#181711]/60 border border-[#e2e7e3]/10 rounded-lg px-3.5 py-2.5 flex items-center justify-between text-xs sm:text-sm">
+          <span className="text-[#a6aea7] flex items-center gap-2 font-medium">
+            <Radio className="h-3 w-3 text-emerald-400 animate-ping" />
             Telemetry API
           </span>
-          <span className="text-[10px] text-emerald-400 font-semibold uppercase">
+          <span className="text-xs text-emerald-400 font-bold uppercase">
             Open
           </span>
         </div>
@@ -180,15 +182,15 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           href="https://github.com/sumit-75/PulseLens"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center justify-between text-xs text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12] px-3 py-2 rounded-lg border border-[#e2e7e3]/10 transition-colors"
+          className="flex items-center justify-between text-xs sm:text-sm text-[#a6aea7] hover:text-[#e2e7e3] hover:bg-[#1c1a12] px-3.5 py-2.5 rounded-lg border border-[#e2e7e3]/10 transition-colors"
         >
           <div className="flex items-center gap-2">
             <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            <span className="font-mono text-[11px]">PulseLens</span>
+            <span className="font-mono text-xs">PulseLens</span>
           </div>
-          <ExternalLink className="h-3 w-3 text-[#889089]" />
+          <ExternalLink className="h-3.5 w-3.5 text-[#889089]" />
         </a>
       </div>
     </aside>
