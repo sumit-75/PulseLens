@@ -277,43 +277,133 @@ npm run simulate
         </div>
       </section>
 
-      {/* KPI Stats Showcase Banner */}
-      <section className="relative z-10 py-12 border-y border-[#e2e7e3]/10 bg-[#12110b]/60 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="p-4">
-            <div className="text-3xl sm:text-4xl font-bold font-mono text-[#e2e7e3]">
-              &lt; 5ms
+      {/* High-Performance Telemetry Engine Metrics Grid */}
+      <section className="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {/* Card 1: Ingestion Latency */}
+          <div className="relative group rounded-2xl border border-[#e2e7e3]/15 bg-[#15140e]/90 p-5 sm:p-6 backdrop-blur-xl shadow-xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.02] overflow-hidden">
+            {/* Top Accent Light */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e2e7e3]/40 to-transparent" />
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-xl bg-[#1c1a12] border border-[#e2e7e3]/15 text-[#e2e7e3]">
+                  <Zap className="h-4 w-4 text-[#e2e7e3]" />
+                </div>
+                <span className="text-xs font-bold text-[#a6aea7] tracking-wider uppercase">
+                  Latency
+                </span>
+              </div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-2 py-0.5 rounded-full">
+                Ultra Fast
+              </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#a6aea7] mt-1 font-medium">
-              API Ingestion Latency
+
+            <div className="text-3xl sm:text-4xl font-bold font-mono text-[#e2e7e3] tracking-tight">
+              &lt; 5<span className="text-lg sm:text-xl font-normal text-[#889089]">ms</span>
+            </div>
+
+            <p className="text-xs text-[#a6aea7] mt-2 font-normal leading-relaxed">
+              Sub-millisecond ingestion pipeline with non-blocking async serialization.
             </p>
+
+            <div className="mt-3 pt-2.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-[11px] font-mono text-[#889089]">
+              <span>Ingestion SLA</span>
+              <span className="text-emerald-400 font-semibold">99.99%</span>
+            </div>
           </div>
 
-          <div className="p-4">
-            <div className="text-3xl sm:text-4xl font-bold font-mono text-emerald-400">
-              3s
+          {/* Card 2: Real-time Polling Stream */}
+          <div className="relative group rounded-2xl border border-emerald-500/25 bg-[#15140e]/90 p-5 sm:p-6 backdrop-blur-xl shadow-xl hover:border-emerald-500/40 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-xl bg-[#1c1a12] border border-emerald-500/25 text-emerald-400">
+                  <Activity className="h-4 w-4 animate-pulse" />
+                </div>
+                <span className="text-xs font-bold text-[#a6aea7] tracking-wider uppercase">
+                  Telemetry Stream
+                </span>
+              </div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+                Live
+              </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#a6aea7] mt-1 font-medium">
-              Real-time Polling Stream
+
+            <div className="text-3xl sm:text-4xl font-bold font-mono text-emerald-400 tracking-tight">
+              3.0<span className="text-lg sm:text-xl font-normal text-emerald-400/70">s</span>
+            </div>
+
+            <p className="text-xs text-[#a6aea7] mt-2 font-normal leading-relaxed">
+              Continuous live polling stream updating logs and graphs dynamically.
             </p>
+
+            <div className="mt-3 pt-2.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-[11px] font-mono text-[#889089]">
+              <span>Auto-refresh</span>
+              <span className="text-emerald-400 font-semibold">Active</span>
+            </div>
           </div>
 
-          <div className="p-4">
-            <div className="text-3xl sm:text-4xl font-bold font-mono text-[#e2e7e3]">
-              100%
+          {/* Card 3: Type Safety & SDK */}
+          <div className="relative group rounded-2xl border border-[#e2e7e3]/15 bg-[#15140e]/90 p-5 sm:p-6 backdrop-blur-xl shadow-xl hover:border-[#e2e7e3]/35 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e2e7e3]/40 to-transparent" />
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-xl bg-[#1c1a12] border border-[#e2e7e3]/15 text-[#e2e7e3]">
+                  <ShieldCheck className="h-4 w-4 text-[#e2e7e3]" />
+                </div>
+                <span className="text-xs font-bold text-[#a6aea7] tracking-wider uppercase">
+                  TypeScript SDK
+                </span>
+              </div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-2 py-0.5 rounded-full">
+                Type-Safe
+              </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#a6aea7] mt-1 font-medium">
-              TypeScript SDK Type-Safe
+
+            <div className="text-3xl sm:text-4xl font-bold font-mono text-[#e2e7e3] tracking-tight">
+              100<span className="text-lg sm:text-xl font-normal text-[#889089]">%</span>
+            </div>
+
+            <p className="text-xs text-[#a6aea7] mt-2 font-normal leading-relaxed">
+              Complete compile-time type validation, auto-retry, and lightweight payloads.
             </p>
+
+            <div className="mt-3 pt-2.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-[11px] font-mono text-[#889089]">
+              <span>Runtime Safety</span>
+              <span className="text-[#e2e7e3] font-semibold">Strict</span>
+            </div>
           </div>
 
-          <div className="p-4">
-            <div className="text-3xl sm:text-4xl font-bold font-mono text-amber-400">
-              60s
+          {/* Card 4: Background Cron Engine */}
+          <div className="relative group rounded-2xl border border-amber-500/25 bg-[#15140e]/90 p-5 sm:p-6 backdrop-blur-xl shadow-xl hover:border-amber-500/40 transition-all hover:scale-[1.02] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-xl bg-[#1c1a12] border border-amber-500/25 text-amber-400">
+                  <BellRing className="h-4 w-4" />
+                </div>
+                <span className="text-xs font-bold text-[#a6aea7] tracking-wider uppercase">
+                  Alert Daemon
+                </span>
+              </div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                node-cron
+              </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#a6aea7] mt-1 font-medium">
-              node-cron Alert Engine
+
+            <div className="text-3xl sm:text-4xl font-bold font-mono text-amber-400 tracking-tight">
+              60<span className="text-lg sm:text-xl font-normal text-amber-400/70">s</span>
+            </div>
+
+            <p className="text-xs text-[#a6aea7] mt-2 font-normal leading-relaxed">
+              Autonomous background worker evaluating error rate and latency anomalies.
             </p>
+
+            <div className="mt-3 pt-2.5 border-t border-[#e2e7e3]/10 flex items-center justify-between text-[11px] font-mono text-[#889089]">
+              <span>Schedule</span>
+              <span className="text-amber-400 font-semibold">* * * * *</span>
+            </div>
           </div>
         </div>
       </section>
