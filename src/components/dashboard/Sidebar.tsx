@@ -7,7 +7,6 @@ import {
   BarChart3,
   BellRing,
   Server,
-  Radio,
   ExternalLink,
   LogOut,
   LogIn,
@@ -147,7 +146,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
               </div>
             </div>
 
-            <Tooltip content="Sign Out">
+            <Tooltip content="Sign Out" side="left">
               <button
                 onClick={() => signOut({ callbackUrl: '/login' })}
                 className="p-2 text-[#889089] hover:text-rose-400 hover:bg-[#232018] rounded-lg transition-colors shrink-0"
@@ -166,19 +165,29 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           </Link>
         )}
 
-        {/* API Ingestion Status */}
-        <div className="bg-[#181711] border border-[#e2e7e3]/12 rounded-xl px-3.5 py-2.5 flex items-center justify-between text-xs sm:text-sm shadow-sm">
-          <span className="text-[#a6aea7] flex items-center gap-2.5 font-medium">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+        {/* API Ingestion Status: Interactive Link to /api/services */}
+        <Tooltip content="Click to view live /api/services endpoint in new tab" side="top">
+          <a
+            href="/api/services"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full bg-[#181711] hover:bg-[#201e16] border border-[#e2e7e3]/12 hover:border-[#e2e7e3]/30 rounded-xl px-3.5 py-2.5 flex items-center justify-between text-xs sm:text-sm shadow-sm transition-all group cursor-pointer"
+          >
+            <span className="text-[#a6aea7] group-hover:text-[#e2e7e3] flex items-center gap-2.5 font-medium transition-colors">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              Telemetry API
             </span>
-            Telemetry API
-          </span>
-          <span className="text-[11px] text-emerald-400 font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
-            Open
-          </span>
-        </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+                Healthy
+              </span>
+              <ExternalLink className="h-3 w-3 text-[#889089] group-hover:text-[#e2e7e3] transition-colors" />
+            </div>
+          </a>
+        </Tooltip>
 
         {/* GitHub link */}
         <a
