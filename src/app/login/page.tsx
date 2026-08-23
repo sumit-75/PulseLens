@@ -42,34 +42,34 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#090a0f] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen w-full bg-[#0e0d08] text-[#e2e7e3] flex items-center justify-center p-4 relative overflow-hidden font-sans">
       {/* Background Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(99,102,241,0.15),rgba(0,0,0,0))] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(226,231,227,0.08),rgba(0,0,0,0))] pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo Header */}
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-xl shadow-indigo-500/30 text-white mb-4">
+          <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-xl shadow-[#e2e7e3]/10 text-[#0e0d08] mb-4 font-bold">
             <Activity className="h-7 w-7 animate-pulse" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h1 className="text-2xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2">
             PulseLens
-            <span className="text-xs uppercase font-semibold tracking-wider bg-indigo-500/15 text-indigo-400 border border-indigo-500/25 px-2 py-0.5 rounded">
+            <span className="text-xs uppercase font-semibold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-2 py-0.5 rounded">
               v1.0
             </span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1 max-w-xs">
+          <p className="text-xs text-[#889089] mt-1 max-w-xs">
             Sign in to access your logs stream, time-series graphs, and automated alert rules.
           </p>
         </div>
 
         {/* Login Card */}
-        <Card className="p-6 border-slate-800/80 bg-[#0e101a]/90 backdrop-blur-xl shadow-2xl space-y-4">
+        <Card className="p-6 border-[#e2e7e3]/15 bg-[#15140e]/95 backdrop-blur-xl shadow-2xl space-y-4">
           <div>
-            <h2 className="text-sm font-semibold text-white mb-1">
+            <h2 className="text-sm font-semibold text-[#e2e7e3] mb-1">
               Authenticate to Workspace
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#889089]">
               Select your preferred authentication method below.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function LoginPage() {
               size="lg"
               onClick={handleGoogleSignIn}
               disabled={isLoadingGoogle || isLoadingDemo}
-              className="w-full bg-slate-900/90 border-slate-700/80 hover:bg-slate-800 text-xs font-medium justify-center gap-3 py-5"
+              className="w-full bg-[#181711] border-[#e2e7e3]/15 hover:bg-[#232018] text-xs font-medium justify-center gap-3 py-5 text-[#e2e7e3]"
             >
               {/* Google G Logo SVG */}
               <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24">
@@ -107,8 +107,8 @@ export default function LoginPage() {
 
             {/* Divider */}
             <div className="relative flex items-center justify-center my-3">
-              <div className="border-t border-slate-800 w-full" />
-              <span className="bg-[#0e101a] px-2 text-[10px] text-slate-500 uppercase tracking-wider font-mono">
+              <div className="border-t border-[#e2e7e3]/10 w-full" />
+              <span className="bg-[#15140e] px-2 text-[10px] text-[#889089] uppercase tracking-wider font-mono">
                 or
               </span>
             </div>
@@ -119,7 +119,7 @@ export default function LoginPage() {
               size="lg"
               onClick={handleDemoSignIn}
               disabled={isLoadingGoogle || isLoadingDemo}
-              className="w-full text-xs font-semibold justify-center gap-2 py-5 shadow-lg shadow-indigo-600/25"
+              className="w-full text-xs font-semibold justify-center gap-2 py-5 shadow-lg"
             >
               <Zap className="h-4 w-4" />
               <span>Instant Demo Access (Engineer Role)</span>
@@ -128,7 +128,7 @@ export default function LoginPage() {
           </div>
 
           {/* Security footnote */}
-          <div className="pt-3 border-t border-slate-800/60 flex items-center justify-center gap-1.5 text-[11px] text-slate-500 font-mono">
+          <div className="pt-3 border-t border-[#e2e7e3]/10 flex items-center justify-center gap-1.5 text-[11px] text-[#889089] font-mono">
             <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
             <span>Ingestion APIs remain open for microservices</span>
           </div>
@@ -136,17 +136,17 @@ export default function LoginPage() {
 
         {/* Feature Highlights */}
         <div className="mt-6 grid grid-cols-3 gap-2 text-center">
-          <div className="p-2.5 rounded-lg bg-slate-900/40 border border-slate-800/60">
-            <CheckCircle2 className="h-3.5 w-3.5 text-indigo-400 mx-auto mb-1" />
-            <p className="text-[10px] text-slate-300 font-medium">Log Viewer</p>
+          <div className="p-2.5 rounded-lg bg-[#15140e]/60 border border-[#e2e7e3]/10">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#e2e7e3] mx-auto mb-1" />
+            <p className="text-[10px] text-[#a6aea7] font-medium">Log Viewer</p>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/40 border border-slate-800/60">
-            <CheckCircle2 className="h-3.5 w-3.5 text-indigo-400 mx-auto mb-1" />
-            <p className="text-[10px] text-slate-300 font-medium">Recharts</p>
+          <div className="p-2.5 rounded-lg bg-[#15140e]/60 border border-[#e2e7e3]/10">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#e2e7e3] mx-auto mb-1" />
+            <p className="text-[10px] text-[#a6aea7] font-medium">Recharts</p>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/40 border border-slate-800/60">
-            <CheckCircle2 className="h-3.5 w-3.5 text-indigo-400 mx-auto mb-1" />
-            <p className="text-[10px] text-slate-300 font-medium">Alert Cron</p>
+          <div className="p-2.5 rounded-lg bg-[#15140e]/60 border border-[#e2e7e3]/10">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#e2e7e3] mx-auto mb-1" />
+            <p className="text-[10px] text-[#a6aea7] font-medium">Alert Cron</p>
           </div>
         </div>
       </div>

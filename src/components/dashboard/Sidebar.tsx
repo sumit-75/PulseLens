@@ -52,29 +52,29 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   ];
 
   return (
-    <aside className="w-64 border-r border-slate-800/80 bg-[#0c0e17]/80 backdrop-blur-xl flex flex-col justify-between p-4 shrink-0 select-none">
+    <aside className="w-64 border-r border-[#e2e7e3]/10 bg-[#12110b]/90 backdrop-blur-xl flex flex-col justify-between p-4 shrink-0 select-none">
       <div>
         {/* Brand */}
-        <div className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-slate-800/60 pb-5">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 text-white">
-            <Activity className="h-5 w-5 animate-pulse" />
+        <div className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-[#e2e7e3]/10 pb-5">
+          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-lg shadow-[#e2e7e3]/10 text-[#0e0d08]">
+            <Activity className="h-5 w-5 animate-pulse font-bold" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-base tracking-tight text-white">
+              <span className="font-bold text-base tracking-tight text-[#e2e7e3]">
                 PulseLens
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider bg-indigo-500/15 text-indigo-400 border border-indigo-500/25 px-1.5 py-0.2 rounded">
+              <span className="text-[10px] uppercase font-semibold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-1.5 py-0.2 rounded">
                 v1.0
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">Mini Observability</p>
+            <p className="text-[11px] text-[#889089]">Mini Observability</p>
           </div>
         </div>
 
         {/* Navigation items */}
         <nav className="space-y-1.5">
-          <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 px-3 mb-2">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-[#889089] px-3 mb-2">
             Telemetry Platform
           </div>
 
@@ -88,15 +88,15 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 className={cn(
                   'w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-all group',
                   isActive
-                    ? 'bg-indigo-600/15 text-indigo-300 border border-indigo-500/30 shadow-sm shadow-indigo-500/10'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                    ? 'bg-[#e2e7e3]/12 text-[#e2e7e3] border border-[#e2e7e3]/25 shadow-sm'
+                    : 'text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12]'
                 )}
               >
                 <div className="flex items-center gap-2.5">
                   <Icon
                     className={cn(
                       'h-4 w-4 transition-colors',
-                      isActive ? 'text-indigo-400' : 'text-slate-500 group-hover:text-slate-300'
+                      isActive ? 'text-[#e2e7e3]' : 'text-[#889089] group-hover:text-[#e2e7e3]'
                     )}
                   />
                   <span>{item.label}</span>
@@ -118,10 +118,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       </div>
 
       {/* Footer Area: User Card + Status */}
-      <div className="space-y-3 pt-4 border-t border-slate-800/60">
+      <div className="space-y-3 pt-4 border-t border-[#e2e7e3]/10">
         {/* User Profile Card */}
         {status === 'authenticated' && session?.user ? (
-          <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-2">
+          <div className="p-2.5 rounded-xl bg-[#181711] border border-[#e2e7e3]/10 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2.5 min-w-0">
               {session.user.image ? (
                 <Image
@@ -129,18 +129,18 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                   alt={session.user.name || 'User'}
                   width={32}
                   height={32}
-                  className="h-8 w-8 rounded-full border border-indigo-500/40 object-cover shrink-0"
+                  className="h-8 w-8 rounded-full border border-[#e2e7e3]/30 object-cover shrink-0"
                 />
               ) : (
-                <div className="h-8 w-8 rounded-full bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs font-bold shrink-0">
+                <div className="h-8 w-8 rounded-full bg-[#e2e7e3]/15 border border-[#e2e7e3]/30 flex items-center justify-center text-[#e2e7e3] text-xs font-bold shrink-0">
                   {session.user.name?.charAt(0) || <User className="h-4 w-4" />}
                 </div>
               )}
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold text-slate-200 truncate">
+                <p className="text-xs font-semibold text-[#e2e7e3] truncate">
                   {session.user.name || 'Engineer'}
                 </p>
-                <p className="text-[10px] text-slate-400 font-mono truncate">
+                <p className="text-[10px] text-[#889089] font-mono truncate">
                   {session.user.email || 'engineer@pulselens.io'}
                 </p>
               </div>
@@ -149,7 +149,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             <button
               onClick={() => signOut({ callbackUrl: '/login' })}
               title="Sign Out"
-              className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition-colors shrink-0"
+              className="p-1.5 text-[#889089] hover:text-rose-400 hover:bg-[#232018] rounded-lg transition-colors shrink-0"
             >
               <LogOut className="h-4 w-4" />
             </button>
@@ -157,7 +157,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         ) : (
           <Link
             href="/login"
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/30 text-xs font-medium transition-all"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#e2e7e3]/10 border border-[#e2e7e3]/20 text-[#e2e7e3] hover:bg-[#e2e7e3]/15 text-xs font-medium transition-all"
           >
             <LogIn className="h-3.5 w-3.5" />
             <span>Sign In to Dashboard</span>
@@ -165,8 +165,8 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         )}
 
         {/* API Ingestion Status */}
-        <div className="bg-slate-900/40 border border-slate-800/60 rounded-lg px-3 py-2 flex items-center justify-between text-xs">
-          <span className="text-slate-400 flex items-center gap-1.5 text-[11px]">
+        <div className="bg-[#181711]/60 border border-[#e2e7e3]/10 rounded-lg px-3 py-2 flex items-center justify-between text-xs">
+          <span className="text-[#889089] flex items-center gap-1.5 text-[11px]">
             <Radio className="h-2.5 w-2.5 text-emerald-400 animate-ping" />
             Telemetry API
           </span>
@@ -180,7 +180,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           href="https://github.com/sumit-75/PulseLens"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center justify-between text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-800/60 transition-colors"
+          className="flex items-center justify-between text-xs text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12] px-3 py-2 rounded-lg border border-[#e2e7e3]/10 transition-colors"
         >
           <div className="flex items-center gap-2">
             <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -188,7 +188,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             </svg>
             <span className="font-mono text-[11px]">PulseLens</span>
           </div>
-          <ExternalLink className="h-3 w-3 text-slate-500" />
+          <ExternalLink className="h-3 w-3 text-[#889089]" />
         </a>
       </div>
     </aside>

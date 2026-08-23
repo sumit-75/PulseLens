@@ -19,15 +19,12 @@ import {
   Pause,
   Filter,
   Activity,
-  Gauge,
   Zap,
-  TrendingDown,
-  TrendingUp,
   Sparkles,
   Plus,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { CustomChartTooltip } from './CustomChartTooltip';
@@ -194,17 +191,17 @@ export function MetricsViewer() {
       {/* Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
-            <BarChart3 className="h-6 w-6 text-indigo-400" />
+          <h1 className="text-2xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
+            <BarChart3 className="h-6 w-6 text-[#e2e7e3]" />
             Time-Series Metrics & Graphs
             {autoRefresh && (
               <span className="flex h-2.5 w-2.5 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
               </span>
             )}
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[#889089] mt-0.5">
             Monitor real-time service latencies, resource utilization, and throughput trends.
           </p>
         </div>
@@ -245,7 +242,7 @@ export function MetricsViewer() {
             variant="outline"
             size="sm"
             onClick={() => setShowQuickAdd(!showQuickAdd)}
-            className="text-xs gap-1.5 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10"
+            className="text-xs gap-1.5 border-[#e2e7e3]/20 text-[#e2e7e3] hover:bg-[#e2e7e3]/10"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Record Metric</span>
@@ -255,47 +252,47 @@ export function MetricsViewer() {
 
       {/* Notification Toast */}
       {notification && (
-        <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-indigo-950/80 border border-indigo-500/30 text-indigo-200 text-xs animate-in fade-in duration-150">
-          <Sparkles className="h-4 w-4 text-indigo-400 shrink-0" />
+        <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#181711] border border-[#e2e7e3]/20 text-[#e2e7e3] text-xs animate-in fade-in duration-150">
+          <Sparkles className="h-4 w-4 text-[#e2e7e3] shrink-0" />
           <span>{notification}</span>
         </div>
       )}
 
       {/* Quick Add Metric Form Drawer */}
       {showQuickAdd && (
-        <Card className="p-4 border-indigo-500/30 bg-indigo-950/20 backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200">
+        <Card className="p-4 border-[#e2e7e3]/20 bg-[#181711]/90 backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200">
           <form onSubmit={handleQuickAdd} className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-medium">Service:</span>
+              <span className="text-xs text-[#889089] font-medium">Service:</span>
               <Input
                 value={customMetricService}
                 onChange={(e) => setCustomMetricService(e.target.value)}
                 placeholder="e.g. payment-service"
-                className="h-8 text-xs w-36 bg-slate-900/80 border-slate-700"
+                className="h-8 text-xs w-36 bg-[#0e0d08] border-[#e2e7e3]/15 text-[#e2e7e3]"
                 required
               />
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-medium">Metric:</span>
+              <span className="text-xs text-[#889089] font-medium">Metric:</span>
               <Input
                 value={customMetricName}
                 onChange={(e) => setCustomMetricName(e.target.value)}
                 placeholder="e.g. response_time_ms"
-                className="h-8 text-xs w-40 bg-slate-900/80 border-slate-700"
+                className="h-8 text-xs w-40 bg-[#0e0d08] border-[#e2e7e3]/15 text-[#e2e7e3]"
                 required
               />
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-medium">Value:</span>
+              <span className="text-xs text-[#889089] font-medium">Value:</span>
               <Input
                 type="number"
                 step="any"
                 value={customMetricValue}
                 onChange={(e) => setCustomMetricValue(e.target.value)}
                 placeholder="e.g. 145.2"
-                className="h-8 text-xs w-28 bg-slate-900/80 border-slate-700 font-mono"
+                className="h-8 text-xs w-28 bg-[#0e0d08] border-[#e2e7e3]/15 text-[#e2e7e3] font-mono"
                 required
               />
             </div>
@@ -314,23 +311,23 @@ export function MetricsViewer() {
       )}
 
       {/* Filter & Metric Selector Bar */}
-      <Card className="p-3.5 border-slate-800/80 bg-slate-900/50">
+      <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/90">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
           {/* Service Selector */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 bg-slate-950/60 border border-slate-800 rounded-lg px-2.5 py-1">
-              <Filter className="h-3.5 w-3.5 text-slate-400" />
-              <span className="text-[11px] text-slate-400 font-medium">Service:</span>
+            <div className="flex items-center gap-1.5 bg-[#0e0d08] border border-[#e2e7e3]/12 rounded-lg px-2.5 py-1">
+              <Filter className="h-3.5 w-3.5 text-[#889089]" />
+              <span className="text-[11px] text-[#889089] font-medium">Service:</span>
               <select
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
-                className="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer pr-2"
+                className="bg-transparent text-xs text-[#e2e7e3] focus:outline-none cursor-pointer pr-2"
               >
-                <option value="all" className="bg-slate-900 text-white">
+                <option value="all" className="bg-[#0e0d08] text-[#e2e7e3]">
                   All Services
                 </option>
                 {services.map((s) => (
-                  <option key={s} value={s} className="bg-slate-900 text-white">
+                  <option key={s} value={s} className="bg-[#0e0d08] text-[#e2e7e3]">
                     {s}
                   </option>
                 ))}
@@ -340,11 +337,11 @@ export function MetricsViewer() {
 
           {/* Metric Selector Pills */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] text-slate-400 font-medium mr-1">
+            <span className="text-[11px] text-[#889089] font-medium mr-1">
               Active Metric:
             </span>
             {metricNames.length === 0 ? (
-              <span className="text-xs text-slate-500 italic">No metrics recorded yet</span>
+              <span className="text-xs text-[#889089] italic">No metrics recorded yet</span>
             ) : (
               metricNames.map((name) => {
                 const isActive = selectedMetric === name;
@@ -354,8 +351,8 @@ export function MetricsViewer() {
                     onClick={() => setSelectedMetric(name)}
                     className={`px-2.5 py-1 rounded-md text-xs font-mono transition-all ${
                       isActive
-                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40 font-semibold'
-                        : 'bg-slate-950/60 text-slate-400 hover:text-slate-200 border border-slate-800/80 hover:bg-slate-800/60'
+                        ? 'bg-[#e2e7e3] text-[#0e0d08] font-bold shadow-md'
+                        : 'bg-[#0e0d08] text-[#889089] hover:text-[#e2e7e3] border border-[#e2e7e3]/10 hover:bg-[#181711]'
                     }`}
                   >
                     {name}
@@ -369,96 +366,96 @@ export function MetricsViewer() {
 
       {/* KPI Cards for the Active Metric */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             Current
           </span>
-          <div className="text-xl font-bold text-white font-mono mt-1">
+          <div className="text-xl font-bold text-[#e2e7e3] font-mono mt-1">
             {stats.current.toFixed(1)}{' '}
-            <span className="text-xs text-slate-400 font-normal">
+            <span className="text-xs text-[#889089] font-normal">
               {getMetricUnit(selectedMetric)}
             </span>
           </div>
         </Card>
 
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             Average
           </span>
-          <div className="text-xl font-bold text-indigo-300 font-mono mt-1">
+          <div className="text-xl font-bold text-[#e2e7e3] font-mono mt-1">
             {stats.avg.toFixed(1)}{' '}
-            <span className="text-xs text-slate-400 font-normal">
+            <span className="text-xs text-[#889089] font-normal">
               {getMetricUnit(selectedMetric)}
             </span>
           </div>
         </Card>
 
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             Min Value
           </span>
           <div className="text-xl font-bold text-emerald-400 font-mono mt-1">
             {stats.min.toFixed(1)}{' '}
-            <span className="text-xs text-slate-400 font-normal">
+            <span className="text-xs text-[#889089] font-normal">
               {getMetricUnit(selectedMetric)}
             </span>
           </div>
         </Card>
 
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             Max Peak
           </span>
           <div className="text-xl font-bold text-rose-400 font-mono mt-1">
             {stats.max.toFixed(1)}{' '}
-            <span className="text-xs text-slate-400 font-normal">
+            <span className="text-xs text-[#889089] font-normal">
               {getMetricUnit(selectedMetric)}
             </span>
           </div>
         </Card>
 
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             P95 Percentile
           </span>
           <div className="text-xl font-bold text-amber-400 font-mono mt-1">
             {stats.p95.toFixed(1)}{' '}
-            <span className="text-xs text-slate-400 font-normal">
+            <span className="text-xs text-[#889089] font-normal">
               {getMetricUnit(selectedMetric)}
             </span>
           </div>
         </Card>
 
-        <Card className="p-3.5 border-slate-800/80 bg-slate-900/40">
-          <span className="text-[10px] uppercase font-semibold text-slate-400">
+        <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/80">
+          <span className="text-[10px] uppercase font-semibold text-[#889089]">
             Data Points
           </span>
-          <div className="text-xl font-bold text-slate-200 font-mono mt-1">
+          <div className="text-xl font-bold text-[#a6aea7] font-mono mt-1">
             {stats.count}
           </div>
         </Card>
       </div>
 
       {/* Main Interactive Time-Series Chart */}
-      <Card className="border-slate-800/80 bg-[#0c0e18]/80 p-5 backdrop-blur-xl">
+      <Card className="border-[#e2e7e3]/10 bg-[#15140e]/90 p-5 backdrop-blur-xl">
         <div className="flex items-center justify-between mb-6">
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-base text-white font-mono">
+              <h3 className="font-semibold text-base text-[#e2e7e3] font-mono">
                 {selectedMetric}
               </h3>
               <Badge variant="default" className="text-[10px] font-mono">
                 {selectedService === 'all' ? 'All Services' : selectedService}
               </Badge>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#889089] mt-0.5">
               Live chronological telemetry timeline
             </p>
           </div>
 
-          <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
+          <div className="flex items-center gap-3 text-xs text-[#889089] font-mono">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-indigo-500 inline-block" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#e2e7e3] inline-block" />
               Recorded Value
             </span>
           </div>
@@ -469,17 +466,17 @@ export function MetricsViewer() {
           {isLoading ? (
             <div className="h-full w-full flex items-center justify-center">
               <div className="flex flex-col items-center gap-2">
-                <RefreshCw className="h-6 w-6 text-indigo-400 animate-spin" />
-                <span className="text-xs text-slate-400">Loading time series data...</span>
+                <RefreshCw className="h-6 w-6 text-[#e2e7e3] animate-spin" />
+                <span className="text-xs text-[#889089]">Loading time series data...</span>
               </div>
             </div>
           ) : activeSeriesData.length === 0 ? (
             <div className="h-full w-full flex flex-col items-center justify-center text-center p-6">
-              <Activity className="h-10 w-10 text-slate-600 mb-2" />
-              <p className="text-sm font-medium text-slate-300">
+              <Activity className="h-10 w-10 text-[#889089]/60 mb-2" />
+              <p className="text-sm font-medium text-[#e2e7e3]">
                 No telemetry data available for &quot;{selectedMetric}&quot;
               </p>
-              <p className="text-xs text-slate-500 max-w-sm mt-1">
+              <p className="text-xs text-[#889089] max-w-sm mt-1">
                 Run &quot;npm run simulate&quot; in terminal or use the &quot;Record Metric&quot; button above to emit data.
               </p>
             </div>
@@ -491,27 +488,27 @@ export function MetricsViewer() {
               >
                 <defs>
                   <linearGradient id="metricGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.45} />
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#e2e7e3" stopOpacity={0.35} />
+                    <stop offset="95%" stopColor="#e2e7e3" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke="rgba(255, 255, 255, 0.05)"
+                  stroke="rgba(226, 231, 227, 0.05)"
                   vertical={false}
                 />
                 <XAxis
                   dataKey="timeFormatted"
-                  stroke="#64748b"
+                  stroke="#889089"
                   fontSize={10}
                   tickLine={false}
-                  axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
+                  axisLine={{ stroke: 'rgba(226, 231, 227, 0.1)' }}
                 />
                 <YAxis
-                  stroke="#64748b"
+                  stroke="#889089"
                   fontSize={10}
                   tickLine={false}
-                  axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
+                  axisLine={{ stroke: 'rgba(226, 231, 227, 0.1)' }}
                   tickFormatter={(val) => `${val}${getMetricUnit(selectedMetric)}`}
                 />
                 <Tooltip
@@ -522,14 +519,14 @@ export function MetricsViewer() {
                 <Area
                   type="monotone"
                   dataKey="value"
-                  stroke="#6366f1"
-                  strokeWidth={2.5}
+                  stroke="#e2e7e3"
+                  strokeWidth={2.2}
                   fillOpacity={1}
                   fill="url(#metricGradient)"
                   activeDot={{
                     r: 5,
-                    fill: '#818cf8',
-                    stroke: '#ffffff',
+                    fill: '#e2e7e3',
+                    stroke: '#0e0d08',
                     strokeWidth: 2,
                   }}
                 />
@@ -542,7 +539,7 @@ export function MetricsViewer() {
       {/* Multi-Metric Mini Sparklines Breakdown */}
       {metricNames.length > 1 && (
         <div className="space-y-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-[#889089]">
             Available Metrics Breakdown
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
@@ -556,13 +553,13 @@ export function MetricsViewer() {
                 <Card
                   key={name}
                   onClick={() => setSelectedMetric(name)}
-                  className="p-4 border-slate-800/70 bg-slate-900/30 hover:border-indigo-500/40 cursor-pointer transition-all group"
+                  className="p-4 border-[#e2e7e3]/10 bg-[#15140e]/70 hover:border-[#e2e7e3]/30 cursor-pointer transition-all group"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-xs text-slate-200 group-hover:text-indigo-300 transition-colors font-medium">
+                    <span className="font-mono text-xs text-[#e2e7e3] group-hover:text-white transition-colors font-medium">
                       {name}
                     </span>
-                    <span className="font-mono text-sm font-bold text-white">
+                    <span className="font-mono text-sm font-bold text-[#e2e7e3]">
                       {latestVal.toFixed(1)} {unit}
                     </span>
                   </div>
@@ -573,7 +570,7 @@ export function MetricsViewer() {
                         <Line
                           type="monotone"
                           dataKey="value"
-                          stroke="#818cf8"
+                          stroke="#e2e7e3"
                           strokeWidth={1.5}
                           dot={false}
                         />
@@ -581,9 +578,9 @@ export function MetricsViewer() {
                     </ResponsiveContainer>
                   </div>
 
-                  <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-800/60 font-mono">
+                  <div className="flex items-center justify-between text-[11px] text-[#889089] mt-2 pt-2 border-t border-[#e2e7e3]/10 font-mono">
                     <span>{series.length} data points</span>
-                    <span className="text-indigo-400 group-hover:underline">
+                    <span className="text-[#e2e7e3] group-hover:underline">
                       View full chart →
                     </span>
                   </div>

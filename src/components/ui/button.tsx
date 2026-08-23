@@ -3,22 +3,22 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e2e7e3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d08] disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
   {
     variants: {
       variant: {
         default:
-          'bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 hover:bg-indigo-500 hover:shadow-indigo-600/35 border border-indigo-500/30',
+          'bg-[#e2e7e3] text-[#0e0d08] font-semibold shadow-lg shadow-[#e2e7e3]/10 hover:bg-[#f0f4f1] border border-[#e2e7e3]',
         secondary:
-          'bg-slate-800/80 text-slate-100 border border-slate-700/60 hover:bg-slate-700/80 hover:border-slate-600',
+          'bg-[#191710] text-[#e2e7e3] border border-[#e2e7e3]/12 hover:bg-[#232018] hover:border-[#e2e7e3]/20',
         outline:
-          'border border-slate-800 bg-transparent text-slate-200 hover:bg-slate-800/60 hover:text-white hover:border-slate-700',
+          'border border-[#e2e7e3]/15 bg-transparent text-[#e2e7e3] hover:bg-[#191710] hover:text-white hover:border-[#e2e7e3]/30',
         ghost:
-          'text-slate-300 hover:bg-slate-800/60 hover:text-white',
+          'text-[#a6aea7] hover:bg-[#191710] hover:text-[#e2e7e3]',
         destructive:
-          'bg-rose-600/90 text-white shadow-lg shadow-rose-600/20 hover:bg-rose-500 border border-rose-500/30',
+          'bg-rose-500/15 text-rose-300 shadow-lg shadow-rose-500/10 hover:bg-rose-500/25 border border-rose-500/30',
         success:
-          'bg-emerald-600/90 text-white shadow-lg shadow-emerald-600/20 hover:bg-emerald-500 border border-emerald-500/30',
+          'bg-emerald-500/15 text-emerald-300 shadow-lg shadow-emerald-500/10 hover:bg-emerald-500/25 border border-emerald-500/30',
       },
       size: {
         default: 'h-9 px-4 py-2',

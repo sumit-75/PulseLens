@@ -7,12 +7,9 @@ import {
   Filter,
   Play,
   Pause,
-  Send,
-  CheckCircle2,
   AlertCircle,
   AlertTriangle,
   Info,
-  Clock,
   ChevronRight,
   Sparkles,
 } from 'lucide-react';
@@ -164,22 +161,22 @@ export function LogsViewer() {
     switch (level.toLowerCase()) {
       case 'error':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-rose-500/10 text-rose-400 border border-rose-500/25">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-rose-500/10 text-rose-300 border border-rose-500/25">
             <AlertCircle className="h-3 w-3 text-rose-400" />
             error
           </span>
         );
       case 'warn':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-amber-500/10 text-amber-400 border border-amber-500/25">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-amber-500/10 text-amber-300 border border-amber-500/25">
             <AlertTriangle className="h-3 w-3 text-amber-400" />
             warn
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-blue-500/10 text-blue-400 border border-blue-500/20">
-            <Info className="h-3 w-3 text-blue-400" />
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase bg-sky-500/10 text-sky-300 border border-sky-500/20">
+            <Info className="h-3 w-3 text-sky-400" />
             info
           </span>
         );
@@ -191,16 +188,16 @@ export function LogsViewer() {
       {/* Top Banner with Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+          <h1 className="text-2xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
             Real-time Log Stream
             {autoRefresh && (
               <span className="flex h-2.5 w-2.5 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
               </span>
             )}
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[#889089] mt-0.5">
             Query, filter, and inspect structured logs across all registered microservices.
           </p>
         </div>
@@ -240,12 +237,12 @@ export function LogsViewer() {
           </Button>
 
           {/* Emit Quick Test Log */}
-          <div className="flex items-center rounded-lg border border-slate-800 bg-slate-900/80 p-0.5">
+          <div className="flex items-center rounded-lg border border-[#e2e7e3]/12 bg-[#181711] p-0.5">
             <button
               onClick={() => handleSendTestLog('info')}
               disabled={isSendingTestLog}
               title="Emit Test INFO Log"
-              className="px-2 py-1 text-[11px] font-medium text-blue-400 hover:bg-blue-500/10 rounded transition-colors"
+              className="px-2 py-1 text-[11px] font-medium text-sky-400 hover:bg-sky-500/10 rounded transition-colors"
             >
               + Info
             </button>
@@ -271,8 +268,8 @@ export function LogsViewer() {
 
       {/* Test Log Notification Toast */}
       {testLogNotification && (
-        <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-indigo-950/80 border border-indigo-500/30 text-indigo-200 text-xs animate-in fade-in duration-150">
-          <Sparkles className="h-4 w-4 text-indigo-400 shrink-0" />
+        <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#181711] border border-[#e2e7e3]/20 text-[#e2e7e3] text-xs animate-in fade-in duration-150">
+          <Sparkles className="h-4 w-4 text-[#e2e7e3] shrink-0" />
           <span>{testLogNotification}</span>
         </div>
       )}
@@ -281,21 +278,21 @@ export function LogsViewer() {
       <StatsCards stats={stats} isLoading={isLoading} />
 
       {/* Control Bar: Search & Filters */}
-      <Card className="p-3.5 border-slate-800/80 bg-slate-900/50">
+      <Card className="p-3.5 border-[#e2e7e3]/10 bg-[#15140e]/90">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
           {/* Search Box */}
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#889089]" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search logs by keyword, error message, or ID..."
-              className="pl-9 bg-slate-950/60 border-slate-800 text-xs h-9"
+              className="pl-9 bg-[#0e0d08] border-[#e2e7e3]/10 text-xs h-9 text-[#e2e7e3]"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-300"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-[#889089] hover:text-[#e2e7e3]"
               >
                 Clear
               </button>
@@ -305,19 +302,19 @@ export function LogsViewer() {
           {/* Filters Row */}
           <div className="flex flex-wrap items-center gap-2">
             {/* Service Filter Dropdown */}
-            <div className="flex items-center gap-1.5 bg-slate-950/60 border border-slate-800 rounded-lg px-2.5 py-1">
-              <Filter className="h-3.5 w-3.5 text-slate-400" />
-              <span className="text-[11px] text-slate-400 font-medium">Service:</span>
+            <div className="flex items-center gap-1.5 bg-[#0e0d08] border border-[#e2e7e3]/12 rounded-lg px-2.5 py-1">
+              <Filter className="h-3.5 w-3.5 text-[#889089]" />
+              <span className="text-[11px] text-[#889089] font-medium">Service:</span>
               <select
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
-                className="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer pr-2"
+                className="bg-transparent text-xs text-[#e2e7e3] focus:outline-none cursor-pointer pr-2"
               >
-                <option value="all" className="bg-slate-900 text-white">
+                <option value="all" className="bg-[#0e0d08] text-[#e2e7e3]">
                   All Services
                 </option>
                 {services.map((s) => (
-                  <option key={s} value={s} className="bg-slate-900 text-white">
+                  <option key={s} value={s} className="bg-[#0e0d08] text-[#e2e7e3]">
                     {s}
                   </option>
                 ))}
@@ -325,7 +322,7 @@ export function LogsViewer() {
             </div>
 
             {/* Level Filter Pills */}
-            <div className="flex items-center bg-slate-950/60 border border-slate-800 rounded-lg p-0.5">
+            <div className="flex items-center bg-[#0e0d08] border border-[#e2e7e3]/12 rounded-lg p-0.5">
               {(['all', 'info', 'warn', 'error'] as const).map((level) => {
                 const isActive = selectedLevel === level;
                 return (
@@ -339,9 +336,9 @@ export function LogsViewer() {
                           : level === 'warn'
                           ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
                           : level === 'info'
-                          ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                          : 'bg-indigo-600 text-white shadow-sm'
-                        : 'text-slate-400 hover:text-slate-200'
+                          ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30'
+                          : 'bg-[#e2e7e3] text-[#0e0d08] font-semibold shadow-sm'
+                        : 'text-[#889089] hover:text-[#e2e7e3]'
                     }`}
                   >
                     {level}
@@ -354,10 +351,10 @@ export function LogsViewer() {
       </Card>
 
       {/* Logs Table / Stream View */}
-      <Card className="border-slate-800/80 overflow-hidden bg-slate-900/30">
-        <div className="px-4 py-3 border-b border-slate-800/70 flex items-center justify-between bg-slate-950/40">
+      <Card className="border-[#e2e7e3]/10 overflow-hidden bg-[#15140e]/70">
+        <div className="px-4 py-3 border-b border-[#e2e7e3]/10 flex items-center justify-between bg-[#12110b]/90">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#a6aea7]">
               Matched Logs ({filteredLogs.length})
             </span>
             {selectedService !== 'all' && (
@@ -366,7 +363,7 @@ export function LogsViewer() {
               </Badge>
             )}
           </div>
-          <span className="text-[11px] text-slate-500">
+          <span className="text-[11px] text-[#889089]">
             Click any row to open JSON Inspector
           </span>
         </div>
@@ -375,7 +372,7 @@ export function LogsViewer() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="border-b border-slate-800/60 bg-slate-950/30 text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <tr className="border-b border-[#e2e7e3]/10 bg-[#0e0d08]/60 text-[11px] font-medium text-[#889089] uppercase tracking-wider">
                 <th className="py-2.5 px-4 w-28">Level</th>
                 <th className="py-2.5 px-4 w-36">Service</th>
                 <th className="py-2.5 px-4">Message</th>
@@ -383,22 +380,22 @@ export function LogsViewer() {
                 <th className="py-2.5 px-3 w-10 text-right"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/40">
+            <tbody className="divide-y divide-[#e2e7e3]/6">
               {isLoading ? (
                 // Skeleton loading rows
                 Array.from({ length: 6 }).map((_, i) => (
                   <tr key={i} className="animate-pulse">
                     <td className="py-3 px-4">
-                      <div className="h-5 w-14 bg-slate-800/60 rounded" />
+                      <div className="h-5 w-14 bg-[#232018] rounded" />
                     </td>
                     <td className="py-3 px-4">
-                      <div className="h-5 w-24 bg-slate-800/60 rounded" />
+                      <div className="h-5 w-24 bg-[#232018] rounded" />
                     </td>
                     <td className="py-3 px-4">
-                      <div className="h-5 w-3/4 bg-slate-800/60 rounded" />
+                      <div className="h-5 w-3/4 bg-[#232018] rounded" />
                     </td>
                     <td className="py-3 px-4">
-                      <div className="h-5 w-28 bg-slate-800/60 rounded" />
+                      <div className="h-5 w-28 bg-[#232018] rounded" />
                     </td>
                     <td className="py-3 px-3"></td>
                   </tr>
@@ -406,13 +403,13 @@ export function LogsViewer() {
               ) : filteredLogs.length === 0 ? (
                 // Empty state
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-slate-400">
+                  <td colSpan={5} className="py-12 text-center text-[#889089]">
                     <div className="flex flex-col items-center justify-center space-y-2">
-                      <Search className="h-8 w-8 text-slate-600" />
-                      <p className="text-sm font-medium text-slate-300">
+                      <Search className="h-8 w-8 text-[#889089]/60" />
+                      <p className="text-sm font-medium text-[#e2e7e3]">
                         No logs match your filter criteria
                       </p>
-                      <p className="text-xs text-slate-500 max-w-sm">
+                      <p className="text-xs text-[#889089] max-w-sm">
                         Try clearing search terms, selecting &quot;All Services&quot;, or clicking one of the &quot;+ Info / Warn / Error&quot; buttons above to emit test logs.
                       </p>
                     </div>
@@ -424,26 +421,26 @@ export function LogsViewer() {
                   <tr
                     key={log.id}
                     onClick={() => setSelectedLog(log)}
-                    className="hover:bg-slate-800/40 cursor-pointer transition-colors group"
+                    className="hover:bg-[#232018]/60 cursor-pointer transition-colors group"
                   >
                     <td className="py-2.5 px-4 font-mono">
                       {getLevelBadge(log.level)}
                     </td>
                     <td className="py-2.5 px-4">
-                      <span className="font-mono text-indigo-300 font-medium text-[11px] bg-slate-900/80 px-2 py-0.5 rounded border border-slate-800/80">
+                      <span className="font-mono text-[#e2e7e3] font-medium text-[11px] bg-[#181711] px-2 py-0.5 rounded border border-[#e2e7e3]/10">
                         {log.service}
                       </span>
                     </td>
-                    <td className="py-2.5 px-4 font-mono text-slate-200 truncate max-w-md group-hover:text-white">
+                    <td className="py-2.5 px-4 font-mono text-[#e2e7e3]/90 truncate max-w-md group-hover:text-white">
                       {log.message}
                     </td>
-                    <td className="py-2.5 px-4 text-slate-400 whitespace-nowrap text-[11px] font-mono">
+                    <td className="py-2.5 px-4 text-[#889089] whitespace-nowrap text-[11px] font-mono">
                       <span title={formatDate(log.timestamp)}>
                         {timeAgo(log.timestamp)}
                       </span>
                     </td>
                     <td className="py-2.5 px-3 text-right">
-                      <ChevronRight className="h-4 w-4 text-slate-600 group-hover:text-slate-300 inline transition-transform group-hover:translate-x-0.5" />
+                      <ChevronRight className="h-4 w-4 text-[#889089] group-hover:text-[#e2e7e3] inline transition-transform group-hover:translate-x-0.5" />
                     </td>
                   </tr>
                 ))

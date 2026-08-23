@@ -66,17 +66,17 @@ export function CreateRuleModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl border border-slate-800 bg-[#0e101a] shadow-2xl p-6 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg rounded-2xl border border-[#e2e7e3]/15 bg-[#15140e] shadow-2xl p-6 overflow-hidden text-[#e2e7e3]">
         {/* Modal Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-slate-800/80 mb-5">
+        <div className="flex items-start justify-between pb-4 border-b border-[#e2e7e3]/10 mb-5">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+            <div className="p-2.5 rounded-xl bg-[#181711] border border-[#e2e7e3]/10 text-[#e2e7e3]">
               <BellRing className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-base font-semibold text-white">Create Alert Rule</h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <h2 className="text-base font-semibold text-[#e2e7e3]">Create Alert Rule</h2>
+              <p className="text-xs text-[#889089] mt-0.5">
                 Define automated threshold conditions evaluated by background jobs.
               </p>
             </div>
@@ -84,7 +84,7 @@ export function CreateRuleModal({
 
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors"
+            className="p-1.5 text-[#889089] hover:text-[#e2e7e3] rounded-lg hover:bg-[#232018] transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -99,7 +99,7 @@ export function CreateRuleModal({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Rule Type Selector */}
           <div>
-            <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+            <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
               Rule Trigger Type
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -108,8 +108,8 @@ export function CreateRuleModal({
                 onClick={() => setRuleType('log')}
                 className={`flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-medium transition-all ${
                   ruleType === 'log'
-                    ? 'bg-indigo-600/15 border-indigo-500/40 text-indigo-300 shadow-sm'
-                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                    ? 'bg-[#e2e7e3] border-[#e2e7e3] text-[#0e0d08] font-semibold shadow-sm'
+                    : 'bg-[#181711] border-[#e2e7e3]/10 text-[#889089] hover:text-[#e2e7e3]'
                 }`}
               >
                 <Terminal className="h-4 w-4" />
@@ -121,8 +121,8 @@ export function CreateRuleModal({
                 onClick={() => setRuleType('metric')}
                 className={`flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-medium transition-all ${
                   ruleType === 'metric'
-                    ? 'bg-indigo-600/15 border-indigo-500/40 text-indigo-300 shadow-sm'
-                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                    ? 'bg-[#e2e7e3] border-[#e2e7e3] text-[#0e0d08] font-semibold shadow-sm'
+                    : 'bg-[#181711] border-[#e2e7e3]/10 text-[#889089] hover:text-[#e2e7e3]'
                 }`}
               >
                 <BarChart3 className="h-4 w-4" />
@@ -133,21 +133,21 @@ export function CreateRuleModal({
 
           {/* Service Selector */}
           <div>
-            <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+            <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
               Target Service
             </label>
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="w-full bg-slate-900/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-[#0e0d08] border border-[#e2e7e3]/15 rounded-lg px-3 py-2 text-xs text-[#e2e7e3] focus:outline-none focus:border-[#e2e7e3]/40"
               required
             >
               {services.map((s) => (
-                <option key={s} value={s} className="bg-slate-900">
+                <option key={s} value={s} className="bg-[#0e0d08]">
                   {s}
                 </option>
               ))}
-              <option value="custom" className="bg-slate-900">
+              <option value="custom" className="bg-[#0e0d08]">
                 + Custom Service Name
               </option>
             </select>
@@ -156,7 +156,7 @@ export function CreateRuleModal({
           {/* Conditional Fields based on Rule Type */}
           {ruleType === 'log' ? (
             <div>
-              <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+              <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
                 Target Log Level
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -166,7 +166,7 @@ export function CreateRuleModal({
                   className={`p-2 rounded-lg border text-xs font-medium capitalize transition-all ${
                     logLevel === 'error'
                       ? 'bg-rose-500/20 border-rose-500/30 text-rose-300'
-                      : 'bg-slate-900/60 border-slate-800 text-slate-400'
+                      : 'bg-[#181711] border-[#e2e7e3]/10 text-[#889089]'
                   }`}
                 >
                   ERROR Level
@@ -177,7 +177,7 @@ export function CreateRuleModal({
                   className={`p-2 rounded-lg border text-xs font-medium capitalize transition-all ${
                     logLevel === 'warn'
                       ? 'bg-amber-500/20 border-amber-500/30 text-amber-300'
-                      : 'bg-slate-900/60 border-slate-800 text-slate-400'
+                      : 'bg-[#181711] border-[#e2e7e3]/10 text-[#889089]'
                   }`}
                 >
                   WARN Level
@@ -186,14 +186,14 @@ export function CreateRuleModal({
             </div>
           ) : (
             <div>
-              <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+              <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
                 Metric Name
               </label>
               <Input
                 value={metricName}
                 onChange={(e) => setMetricName(e.target.value)}
                 placeholder="e.g. response_time_ms, cpu_usage_pct"
-                className="bg-slate-900/80 border-slate-800 text-xs font-mono"
+                className="bg-[#0e0d08] border-[#e2e7e3]/15 text-xs font-mono text-[#e2e7e3]"
                 required
               />
             </div>
@@ -202,7 +202,7 @@ export function CreateRuleModal({
           {/* Threshold & Window */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+              <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
                 Threshold {ruleType === 'log' ? '(Count)' : '(Value)'}
               </label>
               <Input
@@ -211,13 +211,13 @@ export function CreateRuleModal({
                 value={threshold}
                 onChange={(e) => setThreshold(e.target.value)}
                 placeholder="e.g. 5"
-                className="bg-slate-900/80 border-slate-800 text-xs font-mono"
+                className="bg-[#0e0d08] border-[#e2e7e3]/15 text-xs font-mono text-[#e2e7e3]"
                 required
               />
             </div>
 
             <div>
-              <label className="text-xs font-medium text-slate-300 mb-1.5 block">
+              <label className="text-xs font-medium text-[#a6aea7] mb-1.5 block">
                 Time Window (Minutes)
               </label>
               <Input
@@ -227,22 +227,22 @@ export function CreateRuleModal({
                 value={windowMinutes}
                 onChange={(e) => setWindowMinutes(e.target.value)}
                 placeholder="e.g. 5"
-                className="bg-slate-900/80 border-slate-800 text-xs font-mono"
+                className="bg-[#0e0d08] border-[#e2e7e3]/15 text-xs font-mono text-[#e2e7e3]"
                 required
               />
             </div>
           </div>
 
           {/* Preview Box */}
-          <div className="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80 text-[11px] text-slate-400 font-mono">
-            <span className="text-indigo-400 font-semibold">Condition:</span>{' '}
+          <div className="p-3 rounded-lg bg-[#0e0d08] border border-[#e2e7e3]/10 text-[11px] text-[#889089] font-mono">
+            <span className="text-[#e2e7e3] font-semibold">Condition:</span>{' '}
             {ruleType === 'log'
               ? `Alert if ${service} logs >= ${threshold} "${logLevel.toUpperCase()}" events in ${windowMinutes}m`
               : `Alert if ${service} "${metricName}" >= ${threshold} in ${windowMinutes}m`}
           </div>
 
           {/* Modal Actions */}
-          <div className="flex justify-end gap-2 pt-3 border-t border-slate-800/60">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#e2e7e3]/10">
             <Button
               type="button"
               variant="secondary"

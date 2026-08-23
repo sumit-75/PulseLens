@@ -21,27 +21,27 @@ export function StatsCards({ stats, isLoading }: StatsProps) {
       value: stats.totalLogs.toLocaleString(),
       subtitle: 'Across all microservices',
       icon: Terminal,
-      iconColor: 'text-indigo-400',
-      bgGlow: 'from-indigo-500/10 to-transparent',
-      borderColor: 'border-indigo-500/20',
+      iconColor: 'text-[#e2e7e3]',
+      bgGlow: 'from-[#e2e7e3]/8 to-transparent',
+      borderColor: 'border-[#e2e7e3]/15',
     },
     {
       title: 'Errors (Last 1h)',
       value: stats.errorCount1h.toLocaleString(),
       subtitle: stats.errorCount1h > 0 ? 'Requires attention' : 'Healthy operational state',
       icon: AlertCircle,
-      iconColor: stats.errorCount1h > 0 ? 'text-rose-400' : 'text-slate-400',
-      bgGlow: stats.errorCount1h > 0 ? 'from-rose-500/10 to-transparent' : 'from-slate-500/5 to-transparent',
-      borderColor: stats.errorCount1h > 0 ? 'border-rose-500/30' : 'border-slate-800',
+      iconColor: stats.errorCount1h > 0 ? 'text-rose-400' : 'text-[#889089]',
+      bgGlow: stats.errorCount1h > 0 ? 'from-rose-500/10 to-transparent' : 'from-[#e2e7e3]/4 to-transparent',
+      borderColor: stats.errorCount1h > 0 ? 'border-rose-500/30' : 'border-[#e2e7e3]/10',
     },
     {
       title: 'Warnings (Last 1h)',
       value: stats.warnCount1h.toLocaleString(),
       subtitle: 'Potential service latency/retries',
       icon: AlertTriangle,
-      iconColor: stats.warnCount1h > 0 ? 'text-amber-400' : 'text-slate-400',
-      bgGlow: stats.warnCount1h > 0 ? 'from-amber-500/10 to-transparent' : 'from-slate-500/5 to-transparent',
-      borderColor: stats.warnCount1h > 0 ? 'border-amber-500/20' : 'border-slate-800',
+      iconColor: stats.warnCount1h > 0 ? 'text-amber-400' : 'text-[#889089]',
+      bgGlow: stats.warnCount1h > 0 ? 'from-amber-500/10 to-transparent' : 'from-[#e2e7e3]/4 to-transparent',
+      borderColor: stats.warnCount1h > 0 ? 'border-amber-500/25' : 'border-[#e2e7e3]/10',
     },
     {
       title: 'Active Services',
@@ -61,29 +61,29 @@ export function StatsCards({ stats, isLoading }: StatsProps) {
         return (
           <Card
             key={index}
-            className={`relative overflow-hidden border ${item.borderColor} bg-gradient-to-br ${item.bgGlow} p-4 transition-all hover:border-slate-700`}
+            className={`relative overflow-hidden border ${item.borderColor} bg-gradient-to-br ${item.bgGlow} p-4 transition-all hover:border-[#e2e7e3]/30 bg-[#15140e]/80`}
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-slate-400">
+              <span className="text-xs font-medium text-[#a6aea7]">
                 {item.title}
               </span>
-              <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800/80">
+              <div className="p-1.5 rounded-lg bg-[#181711] border border-[#e2e7e3]/10">
                 <Icon className={`h-4 w-4 ${item.iconColor}`} />
               </div>
             </div>
 
             <div className="flex items-baseline gap-2">
               {isLoading ? (
-                <div className="h-7 w-20 bg-slate-800/70 animate-pulse rounded my-0.5" />
+                <div className="h-7 w-20 bg-[#232018] animate-pulse rounded my-0.5" />
               ) : (
-                <span className="text-2xl font-bold tracking-tight text-white">
+                <span className="text-2xl font-bold tracking-tight text-[#e2e7e3] font-mono">
                   {item.value}
                 </span>
               )}
             </div>
 
-            <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1 truncate">
-              <TrendingUp className="h-3 w-3 inline text-slate-600" />
+            <p className="text-[11px] text-[#889089] mt-1 flex items-center gap-1 truncate font-mono">
+              <TrendingUp className="h-3 w-3 inline text-[#889089]" />
               {item.subtitle}
             </p>
           </Card>
