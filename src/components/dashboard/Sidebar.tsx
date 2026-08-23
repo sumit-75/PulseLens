@@ -17,6 +17,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Tooltip } from '@/components/ui/tooltip';
+import { LiveDot } from '@/components/ui/live-dot';
 
 interface SidebarProps {
   activeTab: 'logs' | 'metrics' | 'alerts' | 'services';
@@ -104,11 +105,12 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                 {item.badge && (
                   <span
                     className={cn(
-                      'text-[10px] font-bold border px-2 py-0.5 rounded-full',
+                      'text-[10px] font-bold border px-2 py-0.5 rounded-full flex items-center gap-1.5',
                       isActive ? 'bg-[#0e0d08]/15 border-[#0e0d08]/25 text-[#0e0d08]' : item.badgeColor
                     )}
                   >
-                    {item.badge}
+                    <LiveDot size="sm" />
+                    <span>{item.badge}</span>
                   </span>
                 )}
               </button>

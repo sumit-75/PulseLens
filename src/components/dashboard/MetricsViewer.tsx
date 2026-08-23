@@ -29,6 +29,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Tooltip } from '@/components/ui/tooltip';
+import { LiveDot } from '@/components/ui/live-dot';
 import { CustomChartTooltip } from './CustomChartTooltip';
 
 export interface MetricItem {
@@ -200,15 +201,10 @@ export function MetricsViewer() {
       {/* Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-3">
             <BarChart3 className="h-7 w-7 text-[#e2e7e3]" />
             Time-Series Metrics & Graphs
-            {autoRefresh && (
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
-              </span>
-            )}
+            {autoRefresh && <LiveDot size="md" />}
           </h1>
           <p className="text-sm sm:text-base text-[#a6aea7] mt-1 font-normal">
             Monitor real-time service latencies, resource utilization, and throughput trends with interactive area charts.

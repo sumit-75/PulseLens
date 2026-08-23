@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Server, Activity, Clock, ShieldCheck, Database } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { LiveDot } from '@/components/ui/live-dot';
 import { timeAgo, formatDate } from '@/lib/utils';
 
 export function ServicesOverview() {
@@ -70,8 +71,8 @@ export function ServicesOverview() {
                   <div className="p-2.5 rounded-xl bg-[#181711] border border-[#e2e7e3]/10 text-[#e2e7e3]">
                     <Activity className="h-5 w-5" />
                   </div>
-                  <Badge variant="success" className="text-xs">
-                    <ShieldCheck className="h-3.5 w-3.5" />
+                  <Badge variant="success" className="text-xs flex items-center gap-1.5">
+                    <LiveDot size="sm" />
                     Healthy
                   </Badge>
                 </div>

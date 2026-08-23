@@ -19,6 +19,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
 import { Tooltip } from '@/components/ui/tooltip';
+import { LiveDot } from '@/components/ui/live-dot';
 import { LogDetailModal, type LogEntry } from './LogDetailModal';
 import { StatsCards } from './StatsCards';
 import { timeAgo, formatDate } from '@/lib/utils';
@@ -197,14 +198,9 @@ export function LogsViewer() {
       {/* Top Banner with Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-2.5">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#e2e7e3] flex items-center gap-3">
             Real-time Log Stream
-            {autoRefresh && (
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
-              </span>
-            )}
+            {autoRefresh && <LiveDot size="md" />}
           </h1>
           <p className="text-sm sm:text-base text-[#a6aea7] mt-1 font-normal">
             Query, filter, and inspect structured telemetry logs across all registered microservices in real time.
