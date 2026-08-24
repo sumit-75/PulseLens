@@ -45,6 +45,10 @@
   --radius: 0.625rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   background-color: #0e0d08;
   color: #e2e7e3;
