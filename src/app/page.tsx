@@ -633,66 +633,122 @@ npm run simulate
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-5 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#889089] bg-[#181711] border border-[#e2e7e3]/15 px-3 py-1 rounded-full">
-                Developer Experience
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#e2e7e3]">
+            <div className="lg:col-span-5 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#15140e] border border-[#e2e7e3]/15 text-xs font-bold uppercase tracking-wider text-[#a6aea7] shadow-sm">
+                <Code2 className="h-3.5 w-3.5 text-[#e2e7e3]" />
+                <span>Developer Experience</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#e2e7e3] leading-tight">
                 Start Ingesting Telemetry in Under 2 Minutes
               </h2>
+
               <p className="text-sm sm:text-base text-[#a6aea7] leading-relaxed font-normal">
-                Integrate PulseLens into any Node.js, Next.js, Express, or microservice architecture with simple REST APIs or our strongly-typed TypeScript SDK.
+                Integrate PulseLens into any Node.js, Next.js, Express, or microservice architecture with lightweight REST APIs or our strongly-typed TypeScript SDK.
               </p>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-center gap-3 text-sm text-[#e2e7e3]">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Automatic schema validation on ingestion</span>
+              {/* Quick Install Bar */}
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#15140e] border border-[#e2e7e3]/15 shadow-md">
+                <div className="flex items-center gap-3 font-mono text-xs sm:text-sm text-[#e2e7e3]">
+                  <span className="text-[#889089] select-none">$</span>
+                  <span>npm install @pulselens/sdk</span>
                 </div>
+                <button
+                  onClick={() => handleCopyCode('npm install @pulselens/sdk')}
+                  className="p-1.5 text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12] rounded-lg transition-colors flex items-center gap-1 text-xs font-mono"
+                  title="Copy install command"
+                >
+                  {copied ? (
+                    <Check className="h-4 w-4 text-emerald-400" />
+                  ) : (
+                    <Copy className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+
+              {/* Checklist */}
+              <div className="space-y-3.5 pt-1">
                 <div className="flex items-center gap-3 text-sm text-[#e2e7e3]">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Non-blocking async telemetry dispatch</span>
+                  <div className="h-6 w-6 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+                    <Check className="h-3.5 w-3.5" />
+                  </div>
+                  <span className="font-normal text-[#a6aea7]">Automatic schema validation on ingestion</span>
                 </div>
+
                 <div className="flex items-center gap-3 text-sm text-[#e2e7e3]">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Built-in multi-service traffic simulation tool</span>
+                  <div className="h-6 w-6 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+                    <Check className="h-3.5 w-3.5" />
+                  </div>
+                  <span className="font-normal text-[#a6aea7]">Non-blocking async telemetry dispatch</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-sm text-[#e2e7e3]">
+                  <div className="h-6 w-6 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+                    <Check className="h-3.5 w-3.5" />
+                  </div>
+                  <span className="font-normal text-[#a6aea7]">Built-in multi-service traffic simulation tool</span>
                 </div>
               </div>
 
-              <div className="pt-3">
+              {/* CTAs */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <Link href="/dashboard">
-                  <Button className="h-11 px-6 text-sm font-bold gap-2">
+                  <Button className="h-11 px-6 text-sm font-bold gap-2 shadow-lg">
                     <span>Try In Dashboard</span>
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
+
+                <a
+                  href="https://github.com/sumit-75/PulseLens"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    className="h-11 px-5 text-sm font-semibold border-[#e2e7e3]/15 bg-[#15140e] hover:bg-[#1f1e16] text-[#e2e7e3]"
+                  >
+                    <span>View on GitHub</span>
+                  </Button>
+                </a>
               </div>
             </div>
 
             {/* Right Interactive Code Box */}
             <div className="lg:col-span-7">
-              <Card className="border-[#e2e7e3]/15 bg-[#15140e] overflow-hidden shadow-2xl">
-                {/* Code Tabs Header */}
-                <div className="flex items-center justify-between border-b border-[#e2e7e3]/10 bg-[#12110b] px-4 py-2.5">
-                  <div className="flex items-center gap-2">
-                    {(['sdk', 'curl', 'traffic'] as const).map((tab) => (
-                      <button
-                        key={tab}
-                        onClick={() => setActiveCodeTab(tab)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
-                          activeCodeTab === tab
-                            ? 'bg-[#e2e7e3] text-[#0e0d08] font-bold shadow-sm'
-                            : 'text-[#889089] hover:text-[#e2e7e3]'
-                        }`}
-                      >
-                        {tab === 'sdk' ? 'TypeScript SDK' : tab === 'curl' ? 'REST API (cURL)' : 'Traffic Generator'}
-                      </button>
-                    ))}
+              <div className="rounded-3xl border border-[#e2e7e3]/15 bg-[#14130d] overflow-hidden shadow-2xl">
+                {/* macOS Style Top Window Bar */}
+                <div className="flex items-center justify-between border-b border-[#e2e7e3]/10 bg-[#12110b] px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    {/* Window Controls */}
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
+                      <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
+                      <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+                    </div>
+
+                    {/* Code Tabs */}
+                    <div className="flex items-center gap-1.5 pl-2 border-l border-[#e2e7e3]/10">
+                      {(['sdk', 'curl', 'traffic'] as const).map((tab) => (
+                        <button
+                          key={tab}
+                          onClick={() => setActiveCodeTab(tab)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
+                            activeCodeTab === tab
+                              ? 'bg-[#1e1c14] text-[#e2e7e3] border border-[#e2e7e3]/20 font-bold shadow-sm'
+                              : 'text-[#889089] hover:text-[#e2e7e3]'
+                          }`}
+                        >
+                          {tab === 'sdk' ? 'TypeScript SDK' : tab === 'curl' ? 'REST API (cURL)' : 'Traffic Generator'}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
+                  {/* Copy Button */}
                   <button
                     onClick={() => handleCopyCode(codeSnippets[activeCodeTab])}
-                    className="p-1.5 text-[#889089] hover:text-[#e2e7e3] rounded-lg transition-colors flex items-center gap-1.5 text-xs font-mono"
+                    className="p-1.5 px-2.5 text-[#889089] hover:text-[#e2e7e3] hover:bg-[#1c1a12] rounded-lg transition-colors flex items-center gap-1.5 text-xs font-mono border border-transparent hover:border-[#e2e7e3]/10"
                   >
                     {copied ? (
                       <>
@@ -708,11 +764,63 @@ npm run simulate
                   </button>
                 </div>
 
-                {/* Code Block */}
-                <pre className="p-5 text-xs sm:text-[13px] font-mono text-[#e2e7e3] overflow-x-auto leading-relaxed bg-[#0e0d08]/80">
-                  {codeSnippets[activeCodeTab]}
-                </pre>
-              </Card>
+                {/* Code Block with Rich Syntax Styling */}
+                <div className="p-5 sm:p-6 text-xs sm:text-[13.5px] font-mono text-[#e2e7e3] overflow-x-auto leading-relaxed bg-[#0e0d08]">
+                  {activeCodeTab === 'sdk' && (
+                    <pre className="space-y-1">
+                      <div><span className="text-[#e2e7e3] font-bold">import</span> &#123; <span className="text-sky-300">PulseLens</span> &#125; <span className="text-[#e2e7e3] font-bold">from</span> <span className="text-emerald-300">&apos;@pulselens/sdk&apos;</span>;</div>
+                      <div className="text-[#889089] pt-2">// 1. Initialize PulseLens SDK client</div>
+                      <div><span className="text-[#e2e7e3] font-bold">const</span> pulse = <span className="text-[#e2e7e3] font-bold">new</span> <span className="text-sky-300">PulseLens</span>(&#123;</div>
+                      <div className="pl-4">endpoint: <span className="text-emerald-300">&apos;http://localhost:3000&apos;</span>,</div>
+                      <div className="pl-4">service: <span className="text-emerald-300">&apos;payment-service&apos;</span>,</div>
+                      <div>&#125;);</div>
+                      <div className="text-[#889089] pt-2">// 2. Ingest structured telemetry logs</div>
+                      <div><span className="text-[#e2e7e3] font-bold">await</span> pulse.<span className="text-sky-300">log</span>(&#123;</div>
+                      <div className="pl-4">level: <span className="text-emerald-300">&apos;info&apos;</span>,</div>
+                      <div className="pl-4">message: <span className="text-emerald-300">&apos;Processed stripe webhook for order #9821&apos;</span>,</div>
+                      <div>&#125;);</div>
+                      <div className="text-[#889089] pt-2">// 3. Emit real-time time-series metrics</div>
+                      <div><span className="text-[#e2e7e3] font-bold">await</span> pulse.<span className="text-sky-300">metric</span>(&#123;</div>
+                      <div className="pl-4">name: <span className="text-emerald-300">&apos;response_time_ms&apos;</span>,</div>
+                      <div className="pl-4">value: <span className="text-amber-300">42.5</span>,</div>
+                      <div>&#125;);</div>
+                    </pre>
+                  )}
+
+                  {activeCodeTab === 'curl' && (
+                    <pre className="space-y-1">
+                      <div className="text-[#889089]"># Ingest a structured log event</div>
+                      <div><span className="text-sky-300 font-bold">curl</span> -X POST http://localhost:3000/api/logs \</div>
+                      <div className="pl-4">-H <span className="text-emerald-300">&quot;Content-Type: application/json&quot;</span> \</div>
+                      <div className="pl-4">-d <span className="text-emerald-300">&apos;&#123;</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;service&quot;: &quot;auth-service&quot;,</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;level&quot;: &quot;error&quot;,</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;message&quot;: &quot;Token verification failed: expired session&quot;</span></div>
+                      <div className="pl-4"><span className="text-emerald-300">&#125;&apos;</span></div>
+                      <div className="text-[#889089] pt-3"># Emit time-series metric data point</div>
+                      <div><span className="text-sky-300 font-bold">curl</span> -X POST http://localhost:3000/api/metrics \</div>
+                      <div className="pl-4">-H <span className="text-emerald-300">&quot;Content-Type: application/json&quot;</span> \</div>
+                      <div className="pl-4">-d <span className="text-emerald-300">&apos;&#123;</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;service&quot;: &quot;auth-service&quot;,</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;name&quot;: &quot;cpu_usage_pct&quot;,</span></div>
+                      <div className="pl-8"><span className="text-emerald-300">&quot;value&quot;: 78.4</span></div>
+                      <div className="pl-4"><span className="text-emerald-300">&#125;&apos;</span></div>
+                    </pre>
+                  )}
+
+                  {activeCodeTab === 'traffic' && (
+                    <pre className="space-y-1">
+                      <div className="text-[#889089]"># Run autonomous multi-service traffic generator</div>
+                      <div className="text-emerald-300 font-bold">npm run simulate</div>
+                      <div className="text-[#889089] pt-3"># Starts concurrent telemetry emitters for:</div>
+                      <div className="text-[#a6aea7] pl-2">• <span className="text-[#e2e7e3]">payment-service</span> (webhooks, latency, DB timeouts)</div>
+                      <div className="text-[#a6aea7] pl-2">• <span className="text-[#e2e7e3]">auth-service</span> (token verifications, rate limits)</div>
+                      <div className="text-[#a6aea7] pl-2">• <span className="text-[#e2e7e3]">order-service</span> (checkout transactions, memory spikes)</div>
+                      <div className="text-[#a6aea7] pl-2">• <span className="text-[#e2e7e3]">notification-service</span> (email queue dispatches)</div>
+                    </pre>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
