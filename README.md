@@ -13,7 +13,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple?style=flat-square)](LICENSE)
 
-[Live Demo](https://pulselens-five.vercel.app/) • [Explore Dashboard](http://localhost:3000/dashboard) • [Quickstart](#-quickstart)
+[Live Demo](https://pulselens-five.vercel.app/) • [Explore Dashboard](https://pulselens-five.vercel.app/dashboard) • [Quickstart](#-quickstart)
 
 </div>
 
