@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useSession, signOut } from 'next-auth/react';
 import {
   Activity,
   Terminal,
@@ -23,6 +25,9 @@ import {
   RefreshCw,
   Menu,
   X,
+  User,
+  LogOut,
+  LogIn,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -31,6 +36,7 @@ import { LiveDot } from '@/components/ui/live-dot';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export default function LandingPage() {
+  const { data: session, status } = useSession();
   const [copiedTab, setCopiedTab] = React.useState<'sdk' | 'curl' | 'traffic'>('sdk');
   const [copied, setCopied] = React.useState(false);
   const [activeCodeTab, setActiveCodeTab] = React.useState<'sdk' | 'curl' | 'traffic'>('sdk');
@@ -144,23 +150,68 @@ npm run simulate
 
           {/* Desktop Header Actions */}
           <div className="hidden sm:flex items-center gap-3">
-            <Link
-              href="/login"
-              className="px-3.5 py-2 text-xs sm:text-sm font-semibold text-[#a6aea7] hover:text-[#e2e7e3] transition-colors"
-            >
-              Sign In
-            </Link>
+            {status === 'authenticated' && session?.user ? (
+              <div className="flex items-center gap-2.5">
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#181711] border border-[#e2e7e3]/15 hover:border-[#e2e7e3]/30 transition-all text-xs font-semibold text-[#e2e7e3] group shadow-sm"
+                >
+                  {session.user.image ? (
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name || 'User'}
+                      width={22}
+                      height={22}
+                      className="h-5.5 w-5.5 rounded-full border border-[#e2e7e3]/30 object-cover shrink-0"
+                    />
+                  ) : (
+                    <div className="h-5.5 w-5.5 rounded-full bg-[#e2e7e3]/15 border border-[#e2e7e3]/30 flex items-center justify-center text-[10px] font-bold text-[#e2e7e3] shrink-0">
+                      {session.user.name?.charAt(0) || <User className="h-3 w-3" />}
+                    </div>
+                  )}
+                  <span className="max-w-[120px] truncate">{session.user.name?.split(' ')[0] || 'Engineer'}</span>
+                </Link>
 
-            <Link href="/dashboard">
-              <Button
-                variant="default"
-                size="sm"
-                className="h-10 px-4 sm:px-5 text-xs sm:text-sm font-bold gap-2 shadow-lg shadow-[#e2e7e3]/5 hover:shadow-[#e2e7e3]/15 transition-all"
-              >
-                <span>Launch Dashboard</span>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
+                <button
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                  className="p-2 text-[#889089] hover:text-rose-400 hover:bg-[#1c1a12] rounded-lg transition-colors"
+                  title="Sign Out"
+                >
+                  <LogOut className="h-4 w-4" />
+                </button>
+
+                <Link href="/dashboard">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="h-10 px-4 sm:px-5 text-xs sm:text-sm font-bold gap-2 shadow-lg shadow-[#e2e7e3]/5 hover:shadow-[#e2e7e3]/15 transition-all"
+                  >
+                    <span>Open Dashboard</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/login"
+                  className="px-3.5 py-2 text-xs sm:text-sm font-semibold text-[#a6aea7] hover:text-[#e2e7e3] transition-colors"
+                >
+                  Sign In
+                </Link>
+
+                <Link href="/dashboard">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="h-10 px-4 sm:px-5 text-xs sm:text-sm font-bold gap-2 shadow-lg shadow-[#e2e7e3]/5 hover:shadow-[#e2e7e3]/15 transition-all"
+                  >
+                    <span>Launch Dashboard</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Hamburger Toggle Button */}
@@ -217,23 +268,66 @@ npm run simulate
               </a>
             </div>
 
-            <div className="pt-2 flex flex-col gap-2.5">
-              <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full h-11 text-sm font-bold gap-2 justify-center">
-                  <span>Open Live Workspace</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
+            {status === 'authenticated' && session?.user ? (
+              <div className="pt-2 flex flex-col gap-2.5">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#181711] border border-[#e2e7e3]/15 mb-1">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    {session.user.image ? (
+                      <Image
+                        src={session.user.image}
+                        alt={session.user.name || 'User'}
+                        width={30}
+                        height={30}
+                        className="h-7.5 w-7.5 rounded-full border border-[#e2e7e3]/30 object-cover shrink-0"
+                      />
+                    ) : (
+                      <div className="h-7.5 w-7.5 rounded-full bg-[#e2e7e3]/15 border border-[#e2e7e3]/30 flex items-center justify-center text-xs font-bold text-[#e2e7e3] shrink-0">
+                        {session.user.name?.charAt(0) || <User className="h-3.5 w-3.5" />}
+                      </div>
+                    )}
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-[#e2e7e3] truncate">{session.user.name || 'Engineer'}</p>
+                      <p className="text-[10px] text-[#889089] truncate font-mono">{session.user.email || 'active'}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      signOut({ callbackUrl: '/' });
+                    }}
+                    className="p-1.5 text-[#889089] hover:text-rose-400"
+                    title="Sign Out"
+                  >
+                    <LogOut className="h-4 w-4" />
+                  </button>
+                </div>
 
-              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button
-                  variant="outline"
-                  className="w-full h-11 text-sm font-medium border-[#e2e7e3]/15 bg-[#181711] text-[#e2e7e3] justify-center"
-                >
-                  <span>Sign In</span>
-                </Button>
-              </Link>
-            </div>
+                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full h-11 text-sm font-bold gap-2 justify-center">
+                    <span>Open Live Workspace</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="pt-2 flex flex-col gap-2.5">
+                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full h-11 text-sm font-bold gap-2 justify-center">
+                    <span>Launch Dashboard</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+
+                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="outline"
+                    className="w-full h-11 text-sm font-medium border-[#e2e7e3]/15 bg-[#181711] text-[#e2e7e3] justify-center"
+                  >
+                    <span>Sign In</span>
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </header>

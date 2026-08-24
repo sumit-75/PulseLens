@@ -11,6 +11,7 @@ import {
   LogOut,
   LogIn,
   User,
+  ArrowLeft,
 } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -55,26 +56,43 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   return (
     <aside className="w-64 border-r border-[#e2e7e3]/10 bg-[#12110b]/95 backdrop-blur-xl flex flex-col justify-between p-4 shrink-0 select-none">
       <div>
-        {/* Brand */}
-        <div className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-[#e2e7e3]/10 pb-5">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-lg shadow-[#e2e7e3]/10 text-[#0e0d08]">
-            <Activity className="h-5 w-5 animate-pulse font-bold" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-lg tracking-tight text-[#e2e7e3]">
-                PulseLens
-              </span>
-              <span className="text-[11px] uppercase font-bold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-1.5 py-0.5 rounded">
-                v1.0
-              </span>
+        {/* Brand Header linking to Landing Page */}
+        <Tooltip content="Return to Landing Page" side="right">
+          <Link
+            href="/"
+            className="flex items-center gap-3 px-2 py-3 mb-6 border-b border-[#e2e7e3]/10 pb-5 hover:opacity-90 transition-opacity group block"
+          >
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#e2e7e3] to-[#889089] flex items-center justify-center shadow-lg shadow-[#e2e7e3]/10 text-[#0e0d08] group-hover:scale-105 transition-transform shrink-0">
+              <Activity className="h-5 w-5 animate-pulse font-bold" />
             </div>
-            <p className="text-xs text-[#a6aea7] font-medium tracking-wide">Real-Time Telemetry</p>
-          </div>
-        </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-lg tracking-tight text-[#e2e7e3]">
+                  PulseLens
+                </span>
+                <span className="text-[11px] uppercase font-bold tracking-wider bg-[#e2e7e3]/10 text-[#e2e7e3] border border-[#e2e7e3]/20 px-1.5 py-0.5 rounded">
+                  v1.0
+                </span>
+              </div>
+              <p className="text-xs text-[#a6aea7] font-medium tracking-wide">Real-Time Telemetry</p>
+            </div>
+          </Link>
+        </Tooltip>
 
         {/* Navigation items */}
         <nav className="space-y-2">
+          {/* Quick Exit to Landing Page */}
+          <Link
+            href="/"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-[#a6aea7] hover:text-[#e2e7e3] hover:bg-[#1c1a12] transition-colors border border-[#e2e7e3]/10 mb-3 group"
+          >
+            <div className="flex items-center gap-2">
+              <ArrowLeft className="h-3.5 w-3.5 text-[#889089] group-hover:text-[#e2e7e3] transition-colors" />
+              <span>Back to Home</span>
+            </div>
+            <span className="text-[10px] font-mono text-[#889089] uppercase">Landing</span>
+          </Link>
+
           <div className="text-xs font-bold uppercase tracking-wider text-[#889089] px-3 mb-2">
             Telemetry Platform
           </div>
