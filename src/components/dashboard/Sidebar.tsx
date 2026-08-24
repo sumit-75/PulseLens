@@ -11,7 +11,6 @@ import {
   LogOut,
   LogIn,
   User,
-  ArrowLeft,
 } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -81,18 +80,6 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
 
         {/* Navigation items */}
         <nav className="space-y-2">
-          {/* Quick Exit to Landing Page */}
-          <Link
-            href="/"
-            className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-[#a6aea7] hover:text-[#e2e7e3] hover:bg-[#1c1a12] transition-colors border border-[#e2e7e3]/10 mb-3 group"
-          >
-            <div className="flex items-center gap-2">
-              <ArrowLeft className="h-3.5 w-3.5 text-[#889089] group-hover:text-[#e2e7e3] transition-colors" />
-              <span>Back to Home</span>
-            </div>
-            <span className="text-[10px] font-mono text-[#889089] uppercase">Landing</span>
-          </Link>
-
           <div className="text-xs font-bold uppercase tracking-wider text-[#889089] px-3 mb-2">
             Telemetry Platform
           </div>
