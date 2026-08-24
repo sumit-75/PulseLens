@@ -5,6 +5,13 @@ import { SessionProvider } from '@/components/providers/SessionProvider';
 export const metadata: Metadata = {
   title: 'PulseLens — Real-Time Observability & Telemetry Platform',
   description: 'Real-time logs, metrics time-series, and automated alert monitoring platform.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
